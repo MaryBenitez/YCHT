@@ -39,20 +39,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>john@example.com</td>
-                </tr>
-                <tr>
-                    <td>Mary</td>
-                    <td>Moe</td>
-                    <td>mary@example.com</td>
-                </tr>
-                <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
+                <tr data-th-each="donante: ${donantes}">
+                    <td data-th-text="${donante.idDonante}"></td>
+                    <td data-th-text="${donante.nombreDonante}"></td>
+                    <td data-th-text="${donante.apellidoDonante}"></td>
+                    <td data-th-text="${donante.userDonante}"></td>
                 </tr>
                 </tbody>
             </table>

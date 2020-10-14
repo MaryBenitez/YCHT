@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio de Sesion</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="elegir"></div>
+                <button type="button" class="press-button" onclick="login()">Iniciar Sesion</button>
+                <button type="button" class="press-button" onclick="registrar()">Registrar</button>
+            </div>
+            <div class="redes-sociales">
+                <img src="images/login_registro/gm.png">
+                <img src="images/login_registro/tw.png">
+                <img src="images/login_registro/fb.png">
+            </div>
+            <form id="login" class="input-groups">
+                <input type="text" class="input-field" placeholder="Usuario" required>
+                <input type="password" class="input-field" placeholder="Contraseña" required>
+                <input type="checkbox" class="check-box"><span>¿Olvidaste tu contraseña?</span>
+                <button type="submit" class="submit-btn" onclick="location.href='index.html'">Acceder</button>
+            </form>
+            <form id="register" class="input-groups">
+                <input type="text" class="input-field" placeholder="Usuario" required>
+                <input type="email" class="input-field" placeholder="Correo" required>
+                <input type="password" class="input-field" placeholder="Contraseña" required>
+                <div class="checkBox-DB">
+                    <input type="checkbox" class="check-box" id="donantecheck"><span>Donante</span>
+                    <input type="checkbox" class="check-box" id="beneficiariocheck"><span>Beneficiario</span>
+                </div>
+                <button type="submit" class="submit-btn" id="btnR">Registrar</button>
+            </form>
+        </div>
+    </div>
+    <script src="js/login.js" type="text/javascript"></script>
+</body>
+</html>

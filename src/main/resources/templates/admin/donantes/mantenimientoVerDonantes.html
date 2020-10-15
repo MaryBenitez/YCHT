@@ -45,7 +45,7 @@
                     <td data-th-text="${donante.nombreDonante}"></td>
                     <td data-th-text="${donante.apellidoDonante}"></td>
                     <td data-th-text="${donante.userDonante}"></td>
-                    <td> <button type="button" class="btn btn-outline-success">Editar</button></td>
+                    <td><a th:href="@{editarDonante/}+ ${donante.idDonante}" th:text="'Editar'" class="btn btn-outline-success"></a></td>
                     <td><a th:href="@{borrar/} + ${donante.idDonante}" th:text="'Eliminar'" class="btn btn-outline-danger"></a></td>
                 </tr>
                 </tbody>

@@ -38,6 +38,6 @@ public class AdminController {
     public String borrar(@PathVariable("id") Integer id, Model model){
         repo.delete(repo.getOne(id));
         model.addAttribute("donantes", repo.findAll());
-        return "admin/donantes/mantenimientoVerDonantes";
+        return "redirect:/verDonantes";
     }
 }

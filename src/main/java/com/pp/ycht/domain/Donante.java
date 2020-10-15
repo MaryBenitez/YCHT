@@ -29,6 +29,19 @@ public class Donante {
     @Column(name="contrasenia_usuario")
     private String passDonante;
 
+    public Donante() {
+    }
+
+    public Donante(int idDonante, String nombreDonante, String apellidoDonante, int edadDonante, boolean estadoDonante, String userDonante, String passDonante) {
+        this.idDonante = idDonante;
+        this.nombreDonante = nombreDonante;
+        this.apellidoDonante = apellidoDonante;
+        this.edadDonante = edadDonante;
+        this.estadoDonante = estadoDonante;
+        this.userDonante = userDonante;
+        this.passDonante = passDonante;
+    }
+
     public int getIdDonante() {
         return idDonante;
     }

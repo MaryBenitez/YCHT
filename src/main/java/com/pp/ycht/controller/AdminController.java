@@ -44,7 +44,9 @@ public class AdminController {
     @RequestMapping(value="editarDonante/guardarDonante/{id}", method= RequestMethod.GET)
     public String guardarDonante(@PathVariable("id") Integer id, Model model){
         //repo.delete(repo.getOne(id));
-        repo.saveAndFlush(repo.getOne(id));
+        Donante d = repo.getOne(id);
+        d.setNombreDonante("NUEVONAME");
+        repo.saveAndFlush(d);
         //model.addAttribute("donantes", repo.findAll());
         return "redirect:/verDonantes";
     }

@@ -41,10 +41,18 @@ public class AdminController {
         return "admin/donantes/mantenimientoEditarDonante";
     }
 
+    @RequestMapping(value="editarDonante/guardarDonante/{id}", method= RequestMethod.GET)
+    public String guardarDonante(@PathVariable("id") Integer id, Model model){
+        //repo.delete(repo.getOne(id));
+        repo.saveAndFlush(repo.getOne(id));
+        //model.addAttribute("donantes", repo.findAll());
+        return "redirect:/verDonantes";
+    }
+
     @RequestMapping(value="/borrar/{id}", method= RequestMethod.GET)
     public String borrar(@PathVariable("id") Integer id, Model model){
         repo.delete(repo.getOne(id));
-        model.addAttribute("donantes", repo.findAll());
+        //model.addAttribute("donantes", repo.findAll());
         return "redirect:/verDonantes";
     }
 

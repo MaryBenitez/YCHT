@@ -29,7 +29,7 @@
 </nav>
 <br>
 <section class="page-section portfolio" id="portfolio">
-    <div class="container">
+    <div class="container" >
         <h3>Editar donante</h3>
         <label> Nombre</label>
         <input type="text" th:field="${donante.nombreDonante}">
@@ -39,6 +39,7 @@
         <input type="text" th:field="${donante.edadDonante}">
         <label> User</label>
         <input type="text" th:field="${donante.userDonante}">
+        <a th:href="@{guardarDonante/}+ ${donante.idDonante}" th:text="'Guardar'" class="btn btn-outline-success"></a>
     </div>
 </section>
 </body>

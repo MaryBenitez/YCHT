@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Beneficiarios</title>
+    <title>Editar beneficiario</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet">
@@ -28,28 +29,17 @@
 </nav>
 <br>
 <section class="page-section portfolio" id="portfolio">
-    <div class="container">
-        <h2>Listado de beneficiarios</h2>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>User</th>
-                <th></th><th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr data-th-each="beneficiario: ${beneficiarios}">
-                <!--    <td data-th-text="${donante.idDonante}"></td>-->
-                <td data-th-text="${beneficiario.nombreBeneficiario}"></td>
-                <td data-th-text="${beneficiario.apellidoBeneficiario}"></td>
-                <td data-th-text="${beneficiario.userBeneficiario}"></td>
-                <td><a th:href="@{editarBeneficiario/}+ ${beneficiario.idBeneficiario}" th:text="'Editar'" class="btn btn-outline-success"></a></td>
-                <td><a th:href="@{borrarBeneficiario/} + ${beneficiario.idBeneficiario}" th:text="'Eliminar'" class="btn btn-outline-danger"></a></td>
-            </tr>
-            </tbody>
-        </table>
+    <div class="container" >
+        <h3>Editar beneficiario</h3>
+        <label> Nombre</label>
+        <input type="text" th:field="${beneficiario.nombreBeneficiario}">
+        <label> Apellido</label>
+        <input type="text" th:field="${beneficiario.apellidoBeneficiario}">
+        <label> Edad</label>
+        <input type="text" th:field="${beneficiario.edadBeneficiario}">
+        <label> User</label>
+        <input type="text" th:field="${beneficiario.userBeneficiario}">
+        <a th:href="@{guardarBeneficiario/}+ ${beneficiario.idBeneficiario}" th:text="'Guardar'" class="btn btn-outline-success"></a>
     </div>
 </section>
 </body>

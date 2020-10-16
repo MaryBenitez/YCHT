@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class AdminController {
+public class DonanteController {
 
     @Autowired
     private IDonanteRepo repo;
@@ -58,13 +58,6 @@ public class AdminController {
         repo.delete(repo.getOne(id));
         //model.addAttribute("donantes", repo.findAll());
         return "redirect:/verDonantes";
-    }
-
-    //BENEFICIARIOS
-    @RequestMapping("/verBeneficiarios")
-    public String verBeneficiarios(Model model) {
-        //model.addAttribute("donantes", repo.findAll());
-        return "admin/beneficiarios/mantenimientoVerBeneficiarios";
     }
 
 }

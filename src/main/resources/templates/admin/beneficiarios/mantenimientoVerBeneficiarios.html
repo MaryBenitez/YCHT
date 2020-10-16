@@ -35,24 +35,18 @@
             <tr>
                 <th>Firstname</th>
                 <th>Lastname</th>
-                <th>Email</th>
+                <th>User</th>
+                <th></th><th></th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>John</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
-            </tr>
-            <tr>
-                <td>Mary</td>
-                <td>Moe</td>
-                <td>mary@example.com</td>
-            </tr>
-            <tr>
-                <td>July</td>
-                <td>Dooley</td>
-                <td>july@example.com</td>
+            <tr data-th-each="beneficiario: ${beneficiarios}">
+                <!--    <td data-th-text="${donante.idDonante}"></td>-->
+                <td data-th-text="${beneficiario.nombreBeneficiario}"></td>
+                <td data-th-text="${beneficiario.apellidoBeneficiario}"></td>
+                <td data-th-text="${beneficiario.userBeneficiario}"></td>
+                <td><a th:href="@{editarDonante/}+ ${beneficiario.idBeneficiario}" th:text="'Editar'" class="btn btn-outline-success"></a></td>
+                <td><a th:href="@{borrar/} + ${beneficiario.idBeneficiario}" th:text="'Eliminar'" class="btn btn-outline-danger"></a></td>
             </tr>
             </tbody>
         </table>

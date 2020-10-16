@@ -54,7 +54,7 @@ public class DonanteController {
 
     //Guardar/Actualizar
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveDonane(@ModelAttribute("product") Donante donante) {
+    public String saveDonante(@ModelAttribute("product") Donante donante) {
         service.save(donante);
 
         return "redirect:/verDonantes";
@@ -62,7 +62,7 @@ public class DonanteController {
 
     //Editar
     @RequestMapping("/edit/{id}")
-    public ModelAndView showEditProductPage(@PathVariable(name = "id") int id) {
+    public ModelAndView editDonantes(@PathVariable(name = "id") int id) {
         ModelAndView mav = new ModelAndView("admin/donantes/mantenimientoEditarDonante");
         Donante donante = service.get(id);
         mav.addObject("donante", donante);

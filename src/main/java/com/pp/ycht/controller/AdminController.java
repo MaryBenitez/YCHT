@@ -17,13 +17,7 @@ public class AdminController {
     private IDonanteRepo repo;
 
     @RequestMapping("/admin")
-    public String greeting() {
-        /*Donante donante = new Donante();
-
-        //CREATE
-        donante.setIdDonante(50);
-        donante.setNombreDonante("pruebita");
-        repo.save(donante);*/
+    public String home() {
 
         return "admin/mantenimiento";
     }

@@ -1,23 +1,22 @@
 package com.pp.ycht.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Beneficiario {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="pk_idbeneficiario")
     private int idBeneficiario;
 
     @Column(name="nombre")
     private String nombreBeneficiario;
 
-    @Column(name="apellido")
-    private String apellidoBeneficiario;
+    @Column(name="descripcion")
+    private String descripcionBeneficiario;
 
-    @Column(name="edad")
+    @Column(name="anio_fundacion")
     private int edadBeneficiario;
 
     @Column(name="estado")
@@ -32,10 +31,10 @@ public class Beneficiario {
     public Beneficiario() {
     }
 
-    public Beneficiario(int idBeneficiario, String nombreBeneficiario, String apellidoBeneficiario, int edadBeneficiario, boolean estadoBeneficiario, String userBeneficiario, String passBeneficiario) {
+    public Beneficiario(int idBeneficiario, String nombreBeneficiario, String descripcionBeneficiario, int edadBeneficiario, boolean estadoBeneficiario, String userBeneficiario, String passBeneficiario) {
         this.idBeneficiario = idBeneficiario;
         this.nombreBeneficiario = nombreBeneficiario;
-        this.apellidoBeneficiario = apellidoBeneficiario;
+        this.descripcionBeneficiario = descripcionBeneficiario;
         this.edadBeneficiario = edadBeneficiario;
         this.estadoBeneficiario = estadoBeneficiario;
         this.userBeneficiario = userBeneficiario;
@@ -56,14 +55,6 @@ public class Beneficiario {
 
     public void setNombreBeneficiario(String nombreBeneficiario) {
         this.nombreBeneficiario = nombreBeneficiario;
-    }
-
-    public String getApellidoBeneficiario() {
-        return apellidoBeneficiario;
-    }
-
-    public void setApellidoBeneficiario(String apellidoBeneficiario) {
-        this.apellidoBeneficiario = apellidoBeneficiario;
     }
 
     public int getEdadBeneficiario() {
@@ -96,5 +87,13 @@ public class Beneficiario {
 
     public void setPassBeneficiario(String passBeneficiario) {
         this.passBeneficiario = passBeneficiario;
+    }
+
+    public String getDescripcionBeneficiario() {
+        return descripcionBeneficiario;
+    }
+
+    public void setDescripcionBeneficiario(String descripcionBeneficiario) {
+        this.descripcionBeneficiario = descripcionBeneficiario;
     }
 }

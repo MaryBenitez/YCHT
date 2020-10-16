@@ -29,23 +29,30 @@
 <br>
 <section class="page-section portfolio" id="portfolio">
     <div class="container">
-        <h2>Listado de beneficiarios</h2>
+        <div class="row">
+            <h2 class="col-8">Listado de Beneficiarios</h2>
+            <a href="/newBeneficiario" th:text="'Nuevo Beneficiario'" class="btn btn-outline-info"></a>
+        </div>
+        <br>
         <table class="table">
             <thead>
             <tr>
                 <th>Firstname</th>
-                <th>Lastname</th>
+                <th>YearFundation</th>
                 <th>User</th>
-                <th></th><th></th>
+                <th>Description</th>
+                <th></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
             <tr data-th-each="beneficiario: ${beneficiarios}">
                 <!--    <td data-th-text="${donante.idDonante}"></td>-->
                 <td data-th-text="${beneficiario.nombreBeneficiario}"></td>
-                <td data-th-text="${beneficiario.apellidoBeneficiario}"></td>
+                <td data-th-text="${beneficiario.edadBeneficiario}"></td>
                 <td data-th-text="${beneficiario.userBeneficiario}"></td>
-                <td><a th:href="@{editarBeneficiario/}+ ${beneficiario.idBeneficiario}" th:text="'Editar'" class="btn btn-outline-success"></a></td>
+                <td data-th-text="${beneficiario.descripcionBeneficiario}"></td>
+                <td><a th:href="@{'/editBeneficiario/' + ${beneficiario.idBeneficiario}}" th:text="'Editar'" class="btn btn-outline-success"></a></td>
                 <td><a th:href="@{borrarBeneficiario/} + ${beneficiario.idBeneficiario}" th:text="'Eliminar'" class="btn btn-outline-danger"></a></td>
             </tr>
             </tbody>

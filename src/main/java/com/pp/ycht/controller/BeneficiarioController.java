@@ -3,47 +3,65 @@ package com.pp.ycht.controller;
 import com.pp.ycht.domain.Beneficiario;
 import com.pp.ycht.domain.Donante;
 import com.pp.ycht.repo.IBeneficiario;
+import com.pp.ycht.repo.IDonanteRepo;
+import com.pp.ycht.service.BeneficiarioService;
+import com.pp.ycht.service.DonanteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class BeneficiarioController {
 
+
+    @Autowired
+    private BeneficiarioService service;
+
     @Autowired
     private IBeneficiario repo;
 
-    //BENEFICIARIOS
+    //Beneficiarios
     @RequestMapping("/verBeneficiarios")
     public String verBeneficiarios(Model model) {
-        model.addAttribute("beneficiarios", repo.findAll());
+        model.addAttribute("beneficiarios", service.listAll());
         return "admin/beneficiarios/mantenimientoVerBeneficiarios";
     }
 
-    @RequestMapping(value="/editarBeneficiario/{id}", method= RequestMethod.GET)
-    public String editarBeneficiario(@PathVariable("id") Integer id, Model model){
-        //repo.getOne(id);
-        model.addAttribute("beneficiario", repo.getOne(id));
-        return "admin/beneficiarios/mantenimientoEditarBeneficiario";
+    //Crear
+    @RequestMapping("/newBeneficiario")
+    public String newBeneficiario(Model model) {
+        Beneficiario beneficiario = new Beneficiario();
+        model.addAttribute("beneficiario", beneficiario);
+
+        return "admin/beneficiarios/mantenimientoCrearBeneficiario";
     }
 
-    @RequestMapping(value="editarBeneficiario/guardarBeneficiario/{id}", method= RequestMethod.GET)
-    public String guardarBeneficiario(@PathVariable("id") Integer id, Model model){
-        //repo.delete(repo.getOne(id));
-        Beneficiario b = repo.getOne(id);
-        b.setNombreBeneficiario("NUEVONAMEBENEFICIARIO");
-        repo.saveAndFlush(b);
-        //model.addAttribute("donantes", repo.findAll());
+    //Guardar/Actualizar
+    @RequestMapping(value = "/saveBeneficiario", method = RequestMethod.POST)
+    public String saveBeneficiario(@ModelAttribute("beneficiario") Beneficiario beneficiario) {
+        service.save(beneficiario);
+
         return "redirect:/verBeneficiarios";
     }
 
+    //Editar
+    @RequestMapping("/editBeneficiario/{id}")
+    public ModelAndView showEditProductPage(@PathVariable(name = "id") int id) {
+        ModelAndView mav = new ModelAndView("admin/beneficiarios/mantenimientoEditarBeneficiario");
+        Beneficiario beneficiario = service.get(id);
+        mav.addObject("beneficiario", beneficiario);
+
+        return mav;
+    }
+
     @RequestMapping(value="/borrarBeneficiario/{id}", method= RequestMethod.GET)
-    public String borrar(@PathVariable("id") Integer id, Model model){
+    public String borrarBeneficiario(@PathVariable("id") Integer id, Model model){
         repo.delete(repo.getOne(id));
-        //model.addAttribute("donantes", repo.findAll());
         return "redirect:/verBeneficiarios";
     }
 

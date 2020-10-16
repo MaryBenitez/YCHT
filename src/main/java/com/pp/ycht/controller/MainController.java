@@ -15,18 +15,6 @@ public class MainController {
     @Autowired
     private IDonanteRepo repo;
 
-    @RequestMapping("/")
-    public String greeting() {
-        Donante donante = new Donante();
-
-        //CREATE
-		donante.setIdDonante(50);
-		donante.setNombreDonante("pruebita");
-
-		repo.save(donante);
-        return "index";
-    }
-
     @RequestMapping("/login")
     public String login(){
 

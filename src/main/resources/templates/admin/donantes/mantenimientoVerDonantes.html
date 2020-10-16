@@ -29,7 +29,11 @@
     <br>
     <section class="page-section portfolio" id="portfolio">
         <div class="container">
-            <h2>Listado de donantes</h2>
+            <div class="row">
+                <h2 class="col-8">Listado de donantes</h2>
+                <a href="/new" th:text="'Nuevo Donante'" class="btn btn-outline-info"></a>
+            </div>
+            <br>
             <table class="table">
                 <thead>
                 <tr>
@@ -45,7 +49,7 @@
                     <td data-th-text="${donante.nombreDonante}"></td>
                     <td data-th-text="${donante.apellidoDonante}"></td>
                     <td data-th-text="${donante.userDonante}"></td>
-                    <td><a th:href="@{editarDonante/}+ ${donante.idDonante}" th:text="'Editar'" class="btn btn-outline-success"></a></td>
+                    <td><a th:href="@{'/edit/' + ${donante.idDonante}}" th:text="'Editar'" class="btn btn-outline-success"></a></td>
                     <td><a th:href="@{borrar/} + ${donante.idDonante}" th:text="'Eliminar'" class="btn btn-outline-danger"></a></td>
                 </tr>
                 </tbody>

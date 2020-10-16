@@ -7,23 +7,15 @@
 </head>
 <body>
 <div align="center">
-    <h1>Edit Donante</h1>
+    <h1>Nuevo Donante</h1>
     <br />
     <form action="#" th:action="@{/save}" th:object="${donante}"
           method="post">
 
         <table border="0" cellpadding="10">
             <tr>
-                <td>Donador ID:</td>
-                <td>
-                    <input type="text" th:field="*{idDonante}" readonly="readonly" />
-                </td>
-            </tr>
-            <tr>
                 <td>Nombre:</td>
-                <td>
-                    <input type="text" th:field="*{nombreDonante}" />
-                </td>
+                <td><input type="text" th:field="*{nombreDonante}" /></td>
             </tr>
             <tr>
                 <td>Apellido:</td>
@@ -42,7 +34,7 @@
                 <td><input type="text" th:field="*{passDonante}" /></td>
             </tr>
             <tr>
-                <td colspan="2"><button type="submit">Actualizar</button> </td>
+                <td colspan="2"><button type="submit">Guardar</button> </td>
             </tr>
         </table>
     </form>

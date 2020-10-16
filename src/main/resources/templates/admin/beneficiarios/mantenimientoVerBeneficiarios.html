@@ -53,7 +53,7 @@
                 <td data-th-text="${beneficiario.userBeneficiario}"></td>
                 <td data-th-text="${beneficiario.descripcionBeneficiario}"></td>
                 <td><a th:href="@{'/editBeneficiario/' + ${beneficiario.idBeneficiario}}" th:text="'Editar'" class="btn btn-outline-success"></a></td>
-                <td><a th:href="@{borrarBeneficiario/} + ${beneficiario.idBeneficiario}" th:text="'Eliminar'" class="btn btn-outline-danger"></a></td>
+                <td><a th:href="@{'/deleteBeneficiario/' + ${beneficiario.idBeneficiario}}" th:text="'Eliminar'" class="btn btn-outline-danger"></a></td>
             </tr>
             </tbody>
         </table>

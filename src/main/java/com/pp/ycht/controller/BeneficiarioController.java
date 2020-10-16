@@ -22,9 +22,6 @@ public class BeneficiarioController {
     @Autowired
     private BeneficiarioService service;
 
-    @Autowired
-    private IBeneficiario repo;
-
     //Beneficiarios
     @RequestMapping("/verBeneficiarios")
     public String verBeneficiarios(Model model) {
@@ -59,9 +56,10 @@ public class BeneficiarioController {
         return mav;
     }
 
-    @RequestMapping(value="/borrarBeneficiario/{id}", method= RequestMethod.GET)
-    public String borrarBeneficiario(@PathVariable("id") Integer id, Model model){
-        repo.delete(repo.getOne(id));
+    //Borrar
+    @RequestMapping("/deleteBeneficiario/{id}")
+    public String deleteBeneficiario(@PathVariable(name = "id") int id) {
+        service.delete(id);
         return "redirect:/verBeneficiarios";
     }
 

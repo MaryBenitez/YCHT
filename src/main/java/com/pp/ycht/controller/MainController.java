@@ -15,10 +15,25 @@ public class MainController {
     @Autowired
     private IDonanteRepo repo;
 
+    //Login de Usuarios
     @RequestMapping("/login")
     public String login(){
 
         return "login";
+    }
+
+    //Login Administrador
+    @RequestMapping("/loginAdmin")
+    public String loginAdmin() {
+
+        return "admin/adminLogin";
+    }
+
+    //Principal de Mantenimiento
+    @RequestMapping("/admin")
+    public String home() {
+
+        return "admin/mantenimiento";
     }
 
 }

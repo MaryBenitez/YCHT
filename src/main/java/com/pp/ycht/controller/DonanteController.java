@@ -17,34 +17,17 @@ import org.springframework.web.servlet.ModelAndView;
 public class DonanteController {
 
     @Autowired
-    private IDonanteRepo repo;
-
-
-    @Autowired
     private DonanteService service;
 
-    //ADMIN
-    @RequestMapping("/loginAdmin")
-    public String loginAdmin() {
-
-        return "admin/adminLogin";
-    }
-
-    //PRINCIPAL
-    @RequestMapping("/admin")
-    public String home() {
-
-        return "admin/mantenimiento";
-    }
     //DONANTES
     @RequestMapping("/verDonantes")
     public String verDonantes(Model model) {
-        model.addAttribute("donantes", repo.findAll());
-        return "admin/donantes/mantenimientoVerDonantes";
+        model.addAttribute("donantes", service.listAll());
+        return "admin/beneficiarios/mantenimientoVerDonantes";
     }
 
     //Crear
-    @RequestMapping("/new")
+    @RequestMapping("/newDonante")
     public String newDonante(Model model) {
         Donante donante = new Donante();
         model.addAttribute("donante", donante);
@@ -53,15 +36,15 @@ public class DonanteController {
     }
 
     //Guardar/Actualizar
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveDonante(@ModelAttribute("product") Donante donante) {
+    @RequestMapping(value = "/saveDonante", method = RequestMethod.POST)
+    public String saveDonante(@ModelAttribute("donante") Donante donante) {
         service.save(donante);
 
         return "redirect:/verDonantes";
     }
 
     //Editar
-    @RequestMapping("/edit/{id}")
+    @RequestMapping("/editDonante/{id}")
     public ModelAndView editDonantes(@PathVariable(name = "id") int id) {
         ModelAndView mav = new ModelAndView("admin/donantes/mantenimientoEditarDonante");
         Donante donante = service.get(id);
@@ -70,10 +53,10 @@ public class DonanteController {
         return mav;
     }
 
-    @RequestMapping(value="/borrar/{id}", method= RequestMethod.GET)
-    public String borrar(@PathVariable("id") Integer id, Model model){
-        repo.delete(repo.getOne(id));
-        //model.addAttribute("donantes", repo.findAll());
+    //Borrar
+    @RequestMapping("/deleteDonante/{id}")
+    public String deleteDonante(@PathVariable(name = "id") int id) {
+        service.delete(id);
         return "redirect:/verDonantes";
     }
 

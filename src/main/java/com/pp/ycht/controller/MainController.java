@@ -22,9 +22,15 @@ public class MainController {
         //CREATE
 		donante.setIdDonante(50);
 		donante.setNombreDonante("pruebita");
-		repo.save(donante);
 
+		repo.save(donante);
         return "index";
+    }
+
+    @RequestMapping("/login")
+    public String login(){
+
+        return "login";
     }
 
 }

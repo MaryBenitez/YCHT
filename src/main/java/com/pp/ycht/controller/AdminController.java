@@ -16,6 +16,13 @@ public class AdminController {
     @Autowired
     private IDonanteRepo repo;
 
+    //ADMIN
+    @RequestMapping("/loginAdmin")
+    public String loginAdmin() {
+
+        return "admin/adminLogin";
+    }
+
     //PRINCIPAL
     @RequestMapping("/admin")
     public String home() {

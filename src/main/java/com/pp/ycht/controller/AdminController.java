@@ -16,12 +16,13 @@ public class AdminController {
     @Autowired
     private IDonanteRepo repo;
 
+    //PRINCIPAL
     @RequestMapping("/admin")
     public String home() {
 
         return "admin/mantenimiento";
     }
-
+    //DONANTES
     @RequestMapping("/verDonantes")
     public String verDonantes(Model model) {
         model.addAttribute("donantes", repo.findAll());
@@ -52,5 +53,11 @@ public class AdminController {
         return "redirect:/verDonantes";
     }
 
+    //BENEFICIARIOS
+    @RequestMapping("/verBeneficiarios")
+    public String verBeneficiarios(Model model) {
+        //model.addAttribute("donantes", repo.findAll());
+        return "admin/beneficiarios/mantenimientoVerBeneficiarios";
+    }
 
 }

@@ -43,7 +43,7 @@ public class BeneficiarioController {
     public String saveBeneficiario(@ModelAttribute("beneficiario") Beneficiario beneficiario) {
         service.save(beneficiario);
 
-        return "redirect:/verBeneficiarios";
+        return "redirect:/login";
     }
 
     //Editar

@@ -23,7 +23,7 @@ public class DonanteController {
     @RequestMapping("/verDonantes")
     public String verDonantes(Model model) {
         model.addAttribute("donantes", service.listAll());
-        return "admin/beneficiarios/mantenimientoVerDonantes";
+        return "admin/donantes/mantenimientoVerDonantes";
     }
 
     //Crear
@@ -40,7 +40,7 @@ public class DonanteController {
     public String saveDonante(@ModelAttribute("donante") Donante donante) {
         service.save(donante);
 
-        return "redirect:/verDonantes";
+        return "redirect:/login";
     }
 
     //Editar

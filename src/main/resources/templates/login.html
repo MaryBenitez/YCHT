@@ -3,60 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <title>Inicio de Sesion</title>
-    <link rel="stylesheet" href="css/estilos.css">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="css/loginStyle.css">
 </head>
 <body>
-    <div class="contenedor">
-        <div align="center">
-            <h2 style="color: white; top:25px;">¡Bienvenido a You Can Help Too!</h2>
-            <h5 style="color: white">Iniciar Sesion</h5>
-        </div>
-        <div class="form-box">
-            <form id="login" class="input-groupsLogin">
-                <div align="center">
-                    <img src="images/YCHT.jpg" width="100" height="100" >
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <form class="login100-form" th:action="@{/login}" method="post">
+                <br><br>
+                <span class="login100-form-title p-b-34">Iniciar Sesión</span>
+                <div class="wrap-input100 rs1-wrap-input100 m-b-20">
+                    <input id="first-name" class="input100" type="text" name="username" placeholder="Usuario">
+                    <span class="focus-input100"></span>
                 </div>
-                <br>
-                <input type="text" class="input-fieldLogin" placeholder="Usuario" required>
-                <input type="password" class="input-fieldLogin" placeholder="Contraseña" required>
-                <input type="checkbox" class="check-box"><span>¿Olvidaste tu contraseña?</span>
-                <br>
-                <div class="row">
-                    <button type="submit" class="btn btn-outline-success col-sm-5"
-                            style="margin-right: 5px">Acceder</button>
-                    <div class="col-sm-1"></div>
+                <div class="wrap-input100 rs2-wrap-input100 m-b-20">
+                    <input class="input100" type="password" name="pass" placeholder="Contraseña">
+                    <span class="focus-input100"></span>
+                </div>
+                <div class="container-login100-form-btn">
+                    <button class="btn login100-form-btn btn-success">Acceder</button>
+                </div>
+                <div class="w-full text-center p-t-27 p-b-239">
+                    <span class="txt1">Olvidó</span>
+                    <a href="#" class="txt2">Usuario / Contraseña?</a>
+                </div>
+                <div class="w-full text-center">
                     <button type="button" class="btn btn-outline-primary col-sm-5" data-toggle="modal"
                             data-target="#ModalRegistro">Registrar</button>
                 </div>
             </form>
+            <div class="login100-more" style="background-image: url('images/login_registro/loginImage.jpg');"></div>
         </div>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="ModalRegistro" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">¿Cómo desea registrarse?</h5>
-                </div>
-                <div class="modal-body">
-                    <p align="center"><b>YOU CAN HELP TOO</b></p>
-                    <p>YOU CAN HELP TOO es una aplicación web creada con el fin de facilitar la recaudación de fondos
-                        para lugares donde exista necesidad económica, sin importar la causa. Logrando que la ayuda
-                        sea más rápida, efectiva y accesible.</p>
-                </div>
-                <div class="modal-footer">
-                    <a href="/newDonante" th:text="'Donante'" class="btn btn-info"></a>
-                    <a href="/newBeneficiario" th:text="'Beneficiario'" class="btn btn-info"></a>
-                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
-                </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="ModalRegistro" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">¿Cómo desea registrarse?</h5>
+            </div>
+            <div class="modal-body">
+                <p align="center"><b>YOU CAN HELP TOO</b></p>
+                <p>YOU CAN HELP TOO es una aplicación web creada con el fin de facilitar la recaudación de fondos
+                    para lugares donde exista necesidad económica, sin importar la causa. Logrando que la ayuda
+                    sea más rápida, efectiva y accesible.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="/newDonante" th:text="'Donante'" class="btn btn-info"></a>
+                <a href="/newBeneficiario" th:text="'Beneficiario'" class="btn btn-info"></a>
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
-    <script src="js/login.js" type="text/javascript"></script>
+</div>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+    var varr = /*[[${param.error}]]*/ 'default';
+    if(varr){
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Usuario o Contraseña incorrectos',
+        })
+    }
+
+    /*]]>*/
+</script>
 </body>
 </html>

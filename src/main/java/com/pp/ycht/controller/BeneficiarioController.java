@@ -1,11 +1,7 @@
 package com.pp.ycht.controller;
 
 import com.pp.ycht.domain.Beneficiario;
-import com.pp.ycht.domain.Donante;
-import com.pp.ycht.repo.IBeneficiario;
-import com.pp.ycht.repo.IDonanteRepo;
 import com.pp.ycht.service.BeneficiarioService;
-import com.pp.ycht.service.DonanteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

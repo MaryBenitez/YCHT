@@ -1,7 +1,7 @@
 package com.pp.ycht.service;
 
 import com.pp.ycht.domain.Donante;
-import com.pp.ycht.repo.IDonanteRepo;
+import com.pp.ycht.reposity.IDonanteRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

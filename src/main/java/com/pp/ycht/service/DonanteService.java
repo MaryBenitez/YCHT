@@ -31,4 +31,10 @@ public class DonanteService {
         repo.deleteById(id);
     }
 
+    public List<Donante> findByApellidoDonante(String name) {
+
+        var donantes = (List<Donante>) repo.findByApellidoDonante(name);
+        return donantes;
+    }
+
 }

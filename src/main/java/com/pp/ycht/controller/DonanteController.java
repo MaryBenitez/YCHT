@@ -20,7 +20,7 @@ public class DonanteController {
     //DONANTES
     @RequestMapping("/verDonantes")
     public String verDonantes(Model model) {
-        //model.addAttribute("donantes", service.);
+        //model.addAttribute("donantes", service.findByApellidoDonante("Murillo"));
         model.addAttribute("donantes", service.listAll());
         return "admin/donantes/mantenimientoVerDonantes";
     }

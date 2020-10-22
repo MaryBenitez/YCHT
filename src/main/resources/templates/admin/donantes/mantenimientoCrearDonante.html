@@ -19,71 +19,71 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <form class="login100-form" action="/" method="post">
-                <br><br>
+            <form class="login100-form" action="#" th:action="@{/saveDonante}" th:object="${donante}" method="post">
+
                 <span class="login100-form-title p-b-34">Regístrate como Donante</span>
-                <div class="wrap-input100 rs1-wrap-input100 m-b-20">
-                    <input id="nombre-donante" class="input100" type="text" name="NombreDonante" placeholder="Nombre">
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="text" th:field="*{nombreDonante}" placeholder="Nombre">
                     <span class="focus-input100"></span>
                 </div>
-                <div class="wrap-input100 rs1-wrap-input100 m-b-20">
-                    <input id="apellido-donante" class="input100" type="text" name="ApellidoDonante" placeholder="Apellido">
+                <div class="container">
+                    <div class="row align-items-start">
+                        <div class="col"><font color="white">.</font></div>
+                        <div class="col"><font color="white">.</font></div>
+                        <div class="col"><font color="white">.</font></div>
+                    </div>
+
+                </div>
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="text" th:field="*{apellidoDonante}" placeholder="Apellido">
                     <span class="focus-input100"></span>
                 </div>
-                <div class="wrap-input100 rs1-wrap-input100 m-b-20">
-                    <input id="username" class="input100" type="text" name="UsernameDonante" placeholder="Username">
+                <div class="container">
+                    <div class="row align-items-start">
+                        <div class="col"><font color="white">.</font></div>
+                        <div class="col"><font color="white">.</font></div>
+                        <div class="col"><font color="white">.</font></div>
+                    </div>
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="text" th:field="*{userDonante}" placeholder="Username">
                     <span class="focus-input100"></span>
                 </div>
-                <div class="wrap-input100 rs1-wrap-input100 m-b-20">
-                    <input id="password-donante" class="input100" type="password" name="PassDonante" placeholder="Contraseña">
+                    <div class="container">
+                        <div class="row align-items-start">
+                            <div class="col"><font color="white">.</font></div>
+                            <div class="col"><font color="white">.</font></div>
+                            <div class="col"><font color="white">.</font></div>
+                        </div>
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="password" th:field="*{passDonante}" placeholder="Contraseña">
                     <span class="focus-input100"></span>
                 </div>
-                <div class="wrap-input100 rs1-wrap-input100 m-b-20">
-                    <input id="edad-donante" class="input100" type="number" name="EdadDonante" placeholder="Edad">
+                        <div class="container">
+                            <div class="row align-items-start">
+                                <div class="col"><font color="white">.</font></div>
+                                <div class="col"><font color="white">.</font></div>
+                                <div class="col"><font color="white">.</font></div>
+                            </div>
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="number" th:field="*{edadDonante}" placeholder="Edad">
                     <span class="focus-input100"></span>
                 </div>
+                <div class="container">
+                        <div class="row align-items-start">
+                            <div class="col"><font color="white">.</font></div>
+                            <div class="col"><font color="white">.</font></div>
+                            <div class="col"><font color="white">.</font></div>
+                        </div>
                 <div class="container-login100-form-btn">
                     <button class="btn login100-form-btn btn-success">Registrarme</button>
                 </div>
             </form>
-            <div class="login100-more" style="background-image:url('static/images/login_registro/loginImage.jpg');"></div>
+            <div class="login100-more" style="background-image:url('static/images/login_registro/registrobeneficiario.png');"></div>
         </div>
     </div>
 
 </div>
 
-<!--<div align="center">
-    <h1> Registrarse como nuevo Donante</h1>
-    <br />
-    <form action="#" th:action="@{/saveDonante}" th:object="${donante}"
-          method="post">
 
-        <table border="0" cellpadding="10">
-            <tr>
-                <td>Nombre:</td>
-                <td><input type="text" th:field="*{nombreDonante}" /></td>
-            </tr>
-            <tr>
-                <td>Apellido:</td>
-                <td><input type="text" th:field="*{apellidoDonante}" /></td>
-            </tr>
-            <tr>
-                <td>Edad:</td>
-                <td><input type="text" th:field="*{edadDonante}" /></td>
-            </tr>
-            <tr>
-                <td>User:</td>
-                <td><input type="text" th:field="*{userDonante}" /></td>
-            </tr>
-            <tr>
-                <td>Contraseña:</td>
-                <td><input type="text" th:field="*{passDonante}" /></td>
-            </tr>
-            <tr>
-                <td colspan="2"><button type="submit">Guardar</button> </td>
-            </tr>
-        </table>
-    </form>
-</div> -->
 </body>
 </html>

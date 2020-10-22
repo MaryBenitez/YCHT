@@ -29,14 +29,11 @@ public class Donante {
     @Column(name="contrasenia_usuario")
     private String passDonante;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "rol_usuario", joinColumns = @JoinColumn(name = "pk_iddonante"), inverseJoinColumns = @JoinColumn(name = "id_rol"))
-    private Set<Rol> roles;
 
     public Donante() {
     }
 
-    public Donante(int idDonante, String nombreDonante, String apellidoDonante, int edadDonante, boolean estadoDonante, String userDonante, String passDonante, Set<Rol> roles) {
+    public Donante(int idDonante, String nombreDonante, String apellidoDonante, int edadDonante, boolean estadoDonante, String userDonante, String passDonante) {
         this.idDonante = idDonante;
         this.nombreDonante = nombreDonante;
         this.apellidoDonante = apellidoDonante;
@@ -44,7 +41,6 @@ public class Donante {
         this.estadoDonante = estadoDonante;
         this.userDonante = userDonante;
         this.passDonante = passDonante;
-        this.roles = roles;
     }
 
     public int getIdDonante() {
@@ -103,11 +99,4 @@ public class Donante {
         this.passDonante = passDonante;
     }
 
-    public Set<Rol> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Rol> roles) {
-        this.roles = roles;
-    }
 }

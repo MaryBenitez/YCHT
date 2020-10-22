@@ -25,6 +25,14 @@ public class DonanteController {
         return "admin/donantes/mantenimientoVerDonantes";
     }
 
+    //Filtrar
+    @RequestMapping("/verDonantesFiltrado")
+    public String filtrarDonantes(Model model) {
+        model.addAttribute("donantes", service.findByApellidoDonante("Benitez"));
+        //model.addAttribute("donantes", service.listAll());
+        return "admin/donantes/mantenimientoVerDonantes";
+    }
+
     //Crear
     @RequestMapping("/newDonante")
     public String newDonante(Model model) {

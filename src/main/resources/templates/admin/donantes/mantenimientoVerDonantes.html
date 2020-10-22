@@ -30,9 +30,10 @@
     <section class="page-section portfolio" id="portfolio">
         <div class="container">
             <h2>Listado de donantes</h2>
-            <select name="donante: ${donantes}" id="donante: ${donantes}">
+            <select name="donante: ${donantes}" id="donante: ${donantes}" class="btn btn-outline-success">
                 <option value="${donante.nombreDonante}" data-th-each="donante: ${donantes}" data-th-text="${donante.nombreDonante}"></option>
             </select>
+            <a th:href="@{/verDonantesFiltrado}" th:text="'Filtrar'" class="btn btn-outline-success"></a>
             <br>
             <table class="table">
                 <thead>

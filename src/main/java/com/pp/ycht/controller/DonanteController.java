@@ -19,6 +19,12 @@ public class DonanteController {
     @Autowired
     private DonanteService service;
 
+    @RequestMapping("/donantes")
+    public String index() {
+
+        return "admin/donantes/mantenimientoDonantes";
+    }
+
     //DONANTES
     @RequestMapping("/verDonantes")
     public String verDonantes(Model model) {

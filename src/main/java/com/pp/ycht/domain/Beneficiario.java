@@ -97,8 +97,4 @@ public class Beneficiario {
     public void setDescripcionBeneficiario(String descripcionBeneficiario) {
         this.descripcionBeneficiario = descripcionBeneficiario;
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> front
 }

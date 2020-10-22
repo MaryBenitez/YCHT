@@ -20,11 +20,7 @@ public class MainController {
 
     //Login de Usuarios
     @RequestMapping("/login")
-<<<<<<< HEAD
     public String login() {
-=======
-    public String login(){
->>>>>>> front
 
         return "login";
     }

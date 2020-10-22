@@ -3,6 +3,7 @@ package com.pp.ycht.controller;
 import com.pp.ycht.domain.Donante;
 import com.pp.ycht.service.DonanteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,16 +12,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 public class DonanteController {
 
     @Autowired
     private DonanteService service;
 
+    @RequestMapping("/donantes")
+    public String index() {
+
+        return "admin/donantes/mantenimientoDonantes";
+    }
+
     //DONANTES
     @RequestMapping("/verDonantes")
-    public String verDonantes(Model model) {
-        model.addAttribute("donantes", service.listAll());
+    public String verDonantes(Model model, @Param("keyword") String keyword) {
+        List<Donante> donantes = service.listAll(keyword);
+        model.addAttribute("donantes", donantes);
+        model.addAttribute("keyword", keyword);
+
         return "admin/donantes/mantenimientoVerDonantes";
     }
 

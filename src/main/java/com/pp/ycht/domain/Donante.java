@@ -29,6 +29,10 @@ public class Donante {
     @Column(name="contrasenia_usuario")
     private String passDonante;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> front
     public Donante() {
     }
 

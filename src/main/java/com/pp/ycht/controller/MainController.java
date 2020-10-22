@@ -3,10 +3,7 @@ package com.pp.ycht.controller;
 import com.pp.ycht.reposity.IDonanteRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.security.Principal;
 
 @Controller
 public class MainController {
@@ -23,7 +20,11 @@ public class MainController {
 
     //Login de Usuarios
     @RequestMapping("/login")
+<<<<<<< HEAD
     public String login() {
+=======
+    public String login(){
+>>>>>>> front
 
         return "login";
     }

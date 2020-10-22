@@ -25,7 +25,7 @@ public class MainController {
     @RequestMapping("/login")
     public String login() {
 
-        return "index";
+        return "login";
     }
 
     //Login Administrador

@@ -15,7 +15,10 @@ public class DonanteService {
     @Autowired
     private IDonanteRepo repo;
 
-    public List<Donante> listAll() {
+    public List<Donante> listAll(String keyword) {
+        if (keyword != null) {
+            return repo.search(keyword);
+        }
         return repo.findAll();
     }
 
@@ -29,11 +32,6 @@ public class DonanteService {
 
     public void delete(Integer id) {
         repo.deleteById(id);
-    }
-
-    public List<Donante> findByApellidoDonante(String name) {
-        var donantes = (List<Donante>) repo.findByApellidoDonante(name);
-        return donantes;
     }
 
 }

@@ -32,7 +32,7 @@ public class Donante {
     public Donante() {
     }
 
-    public Donante(int idDonante, String nombreDonante, String apellidoDonante, int edadDonante, boolean estadoDonante, String userDonante, String passDonante, Set<Rol> roles) {
+    public Donante(int idDonante, String nombreDonante, String apellidoDonante, int edadDonante, boolean estadoDonante, String userDonante, String passDonante) {
         this.idDonante = idDonante;
         this.nombreDonante = nombreDonante;
         this.apellidoDonante = apellidoDonante;

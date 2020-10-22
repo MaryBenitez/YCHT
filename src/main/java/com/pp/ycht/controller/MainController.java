@@ -22,9 +22,10 @@ public class MainController {
     }
 
     //Login de Usuarios
-    @GetMapping(value = {"/login"})
-    public String login(Principal principal){
-        return principal == null ? "login" : "redirect:/";
+    @RequestMapping("/login")
+    public String login() {
+
+        return "index";
     }
 
     //Login Administrador

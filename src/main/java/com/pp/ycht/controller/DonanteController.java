@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 public class DonanteController {
 
@@ -26,11 +28,19 @@ public class DonanteController {
     }
 
     //Filtrar
-    @RequestMapping("/verDonantesFiltrado")
+   /* @RequestMapping("/verDonantesFiltrado")
     public String filtrarDonantes(Model model) {
         model.addAttribute("donantes", service.findByApellidoDonante("Benitez"));
         //model.addAttribute("donantes", service.listAll());
         return "admin/donantes/mantenimientoVerDonantes";
+    }*/
+    @RequestMapping("/verDonantesFiltrado/{valor}")
+    public ModelAndView filtrarDonantes(@PathVariable(name = "valor") String valor) {
+        ModelAndView mav = new ModelAndView("admin/donantes/mantenimientoVerDonantes");
+        List<Donante> donantes = service.findByApellidoDonante(valor);
+        mav.addObject("donantes", donantes);
+
+        return mav;
     }
 
     //Crear

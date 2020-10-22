@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface IDonanteRepo extends JpaRepository<Donante,Integer> {
 
-    @Query("select D from Donante D where D.apellidoDonante like 'Benitez'")
+    @Query("select D from Donante D where D.apellidoDonante like ?1")
     List<Donante> findByApellidoDonante(String name);
 }
+

@@ -3,6 +3,7 @@ package com.pp.ycht.controller;
 import com.pp.ycht.domain.Donante;
 import com.pp.ycht.service.DonanteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,26 +28,12 @@ public class DonanteController {
 
     //DONANTES
     @RequestMapping("/verDonantes")
-    public String verDonantes(Model model) {
-        //model.addAttribute("donantes", service.findByApellidoDonante("Murillo"));
-        model.addAttribute("donantes", service.listAll());
-        return "admin/donantes/mantenimientoVerDonantes";
-    }
+    public String verDonantes(Model model, @Param("keyword") String keyword) {
+        List<Donante> donantes = service.listAll(keyword);
+        model.addAttribute("donantes", donantes);
+        model.addAttribute("keyword", keyword);
 
-    //Filtrar
-   /* @RequestMapping("/verDonantesFiltrado")
-    public String filtrarDonantes(Model model) {
-        model.addAttribute("donantes", service.findByApellidoDonante("Benitez"));
-        //model.addAttribute("donantes", service.listAll());
         return "admin/donantes/mantenimientoVerDonantes";
-    }*/
-    @RequestMapping("/verDonantesFiltrado/{valor}")
-    public ModelAndView filtrarDonantes(@PathVariable(name = "valor") String valor) {
-        ModelAndView mav = new ModelAndView("admin/donantes/mantenimientoVerDonantes");
-        List<Donante> donantes = service.findByApellidoDonante(valor);
-        mav.addObject("donantes", donantes);
-
-        return mav;
     }
 
     //Crear

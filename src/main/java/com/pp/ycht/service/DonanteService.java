@@ -15,7 +15,10 @@ public class DonanteService {
     @Autowired
     private IDonanteRepo repo;
 
-    public List<Donante> listAll() {
+    public List<Donante> listAll(String keyword) {
+        if (keyword != null) {
+            return repo.search(keyword);
+        }
         return repo.findAll();
     }
 

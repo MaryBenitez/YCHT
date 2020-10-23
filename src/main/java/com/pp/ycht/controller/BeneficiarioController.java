@@ -18,6 +18,12 @@ public class BeneficiarioController {
     @Autowired
     private BeneficiarioService service;
 
+    @RequestMapping("/beneficiarios")
+    public String index() {
+
+        return "admin/beneficiarios/mantenimientoBeneficiarios";
+    }
+
     //Beneficiarios
     @RequestMapping("/verBeneficiarios")
     public String verBeneficiarios(Model model) {

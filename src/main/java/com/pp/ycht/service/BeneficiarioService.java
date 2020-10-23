@@ -16,7 +16,7 @@ public class BeneficiarioService {
     private IBeneficiario repo;
 
     public List<Beneficiario> listAll() {
-        return repo.findAll();
+        return repo.aceptados();
     }
 
     public void save(Beneficiario beneficiario) {
@@ -29,5 +29,9 @@ public class BeneficiarioService {
 
     public void delete(Integer id) {
         repo.deleteById(id);
+    }
+
+    public List<Beneficiario> listSoli() {
+        return repo.solicitudes();
     }
 }

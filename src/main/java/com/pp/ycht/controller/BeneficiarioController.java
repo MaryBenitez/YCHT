@@ -24,6 +24,12 @@ public class BeneficiarioController {
         return "admin/beneficiarios/mantenimientoBeneficiarios";
     }
 
+    @RequestMapping("/solicitudesB")
+    public String verSolicitudesB(Model model) {
+        model.addAttribute("beneficiarios", service.listSoli());
+        return "admin/beneficiarios/mantenimientoVerSolicitudesB";
+    }
+
     //Beneficiarios
     @RequestMapping("/verBeneficiarios")
     public String verBeneficiarios(Model model) {

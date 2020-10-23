@@ -11,6 +11,9 @@ import java.util.List;
 @Repository
 public interface IBeneficiario extends JpaRepository<Beneficiario,Integer> {
 
+    @Query("SELECT b FROM Beneficiario b WHERE b.estadoBeneficiario = true")
+    List<Beneficiario> aceptados();
+
     @Query("SELECT b FROM Beneficiario b WHERE b.estadoBeneficiario = false")
     List<Beneficiario> solicitudes();
 

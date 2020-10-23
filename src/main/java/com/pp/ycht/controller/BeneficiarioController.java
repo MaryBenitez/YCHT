@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 public class BeneficiarioController {
 
@@ -23,11 +25,33 @@ public class BeneficiarioController {
 
         return "admin/beneficiarios/mantenimientoBeneficiarios";
     }
-
+    //Listado soli
     @RequestMapping("/solicitudesB")
     public String verSolicitudesB(Model model) {
         model.addAttribute("beneficiarios", service.listSoli());
         return "admin/beneficiarios/mantenimientoVerSolicitudesB";
+    }
+    //aceptar solis
+    @RequestMapping("/aceptarBeneficiario/{id}")
+    public ModelAndView aceptarBeneficiario(@PathVariable(name = "id") int id) {
+        ModelAndView mav = new ModelAndView("admin/beneficiarios/mantenimientoVerSolicitudesB");
+        Beneficiario beneficiario = service.get(id);
+        beneficiario.setEstadoBeneficiario(true);
+        List<Beneficiario> beneficiarios = service.listSoli();
+        mav.addObject("beneficiarios", beneficiarios);
+
+        return mav;
+    }
+    //Rechazar solicitudes
+    @RequestMapping("/rechazarBeneficiario/{id}")
+    public ModelAndView rechazarBeneficiario(@PathVariable(name = "id") int id) {
+        ModelAndView mav = new ModelAndView("admin/beneficiarios/mantenimientoVerSolicitudesB");
+        //Beneficiario beneficiario = service.get(id);
+        service.delete(id);
+        List<Beneficiario> beneficiarios = service.listSoli();
+        mav.addObject("beneficiarios", beneficiarios);
+
+        return mav;
     }
 
     //Beneficiarios

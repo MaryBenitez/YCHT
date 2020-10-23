@@ -49,8 +49,8 @@
                 <td data-th-text="${beneficiario.edadBeneficiario}"></td>
                 <td data-th-text="${beneficiario.userBeneficiario}"></td>
                 <td data-th-text="${beneficiario.descripcionBeneficiario}"></td>
-                <td><a th:text="'Aceptar'" class="btn btn-outline-success"></a></td>
-                <td><a th:text="'Rechazar'" class="btn btn-outline-danger"></a></td>
+                <td><a th:href="@{'/aceptarBeneficiario/' + ${beneficiario.idBeneficiario}}" th:text="'Aceptar'" class="btn btn-outline-success"></a></td>
+                <td><a th:href="@{'/rechazarBeneficiario/' + ${beneficiario.idBeneficiario}}" th:text="'Rechazar'" class="btn btn-outline-danger"></a></td>
             </tr>
             </tbody>
         </table>

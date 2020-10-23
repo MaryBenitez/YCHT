@@ -11,6 +11,5 @@ public interface IDonanteRepo extends JpaRepository<Donante,Integer> {
 
   @Query("SELECT d FROM Donante d WHERE CONCAT(d.nombreDonante, ' ', d.apellidoDonante, ' ', d.userDonante) LIKE %?1%")
   List<Donante> search(String keyword);
-
 }
 

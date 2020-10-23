@@ -30,4 +30,8 @@ public class BeneficiarioService {
     public void delete(Integer id) {
         repo.deleteById(id);
     }
+
+    public List<Beneficiario> listSoli() {
+        return repo.solicitudes();
+    }
 }

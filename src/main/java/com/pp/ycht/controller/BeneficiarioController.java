@@ -31,27 +31,24 @@ public class BeneficiarioController {
         model.addAttribute("beneficiarios", service.listSoli());
         return "admin/beneficiarios/mantenimientoVerSolicitudesB";
     }
+    
     //aceptar solis
     @RequestMapping("/aceptarBeneficiario/{id}")
-    public ModelAndView aceptarBeneficiario(@PathVariable(name = "id") int id) {
-        ModelAndView mav = new ModelAndView("admin/beneficiarios/mantenimientoVerSolicitudesB");
+    public String aceptarBeneficiario(@PathVariable(name = "id") int id, Model model) {
+
         Beneficiario beneficiario = service.get(id);
         beneficiario.setEstadoBeneficiario(true);
         List<Beneficiario> beneficiarios = service.listSoli();
-        mav.addObject("beneficiarios", beneficiarios);
+        model.addAttribute("beneficiario", beneficiarios);
 
-        return mav;
+        return "redirect:/solicitudesB";
     }
     //Rechazar solicitudes
     @RequestMapping("/rechazarBeneficiario/{id}")
-    public ModelAndView rechazarBeneficiario(@PathVariable(name = "id") int id) {
-        ModelAndView mav = new ModelAndView("admin/beneficiarios/mantenimientoVerSolicitudesB");
-        //Beneficiario beneficiario = service.get(id);
+    public String rechazarBeneficiario(@PathVariable(name = "id") int id) {
         service.delete(id);
-        List<Beneficiario> beneficiarios = service.listSoli();
-        mav.addObject("beneficiarios", beneficiarios);
 
-        return mav;
+        return "redirect:/solicitudesB";
     }
 
     //Beneficiarios

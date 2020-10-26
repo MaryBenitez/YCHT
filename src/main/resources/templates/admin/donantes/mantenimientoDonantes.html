@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Donantes</title>
+    <base href="/">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
     <!-- Fonts CSS-->
-    <link rel="stylesheet" href="css/heading.css">
-    <link rel="stylesheet" href="css/body.css">
+    <link rel="stylesheet" href="css/heading.css" type="text/css">
+    <link rel="stylesheet" href="css/body.css" type="text/css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
@@ -38,7 +39,7 @@
         <div class="row justify-content-center">
             <!-- Portfolio Items-->
             <div class="col-md-6 col-lg-4 mb-5">
-                <a th:href="@{verDonantes}">
+                <a th:href="@{/admin/donantes/verDonantes}">
                     <div class="portfolio-item mx-auto">
                         <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                             <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>

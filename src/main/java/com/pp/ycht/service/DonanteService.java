@@ -1,11 +1,16 @@
 package com.pp.ycht.service;
 
 import com.pp.ycht.domain.Donante;
+import com.pp.ycht.domain.Rol;
 import com.pp.ycht.reposity.IDonanteRepo;
+import com.pp.ycht.reposity.IRolReposity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -15,6 +20,12 @@ public class DonanteService {
     @Autowired
     private IDonanteRepo repo;
 
+    @Autowired
+    private IRolReposity rolReposity;
+
+    @Autowired
+    BCryptPasswordEncoder encoder;
+
     public List<Donante> listAll(String keyword) {
         if (keyword != null) {
             return repo.search(keyword);
@@ -23,6 +34,10 @@ public class DonanteService {
     }
 
     public void save(Donante donante) {
+        donante.setPass(encoder.encode(donante.getPass()));
+        donante.setEstadoDonante(true);
+        Rol rol = rolReposity.findByRol("USER");
+        donante.setRoles(new HashSet<Rol>(Arrays.asList(rol)));
         repo.save(donante);
     }
 
@@ -31,7 +46,7 @@ public class DonanteService {
     }
 
     public void delete(Integer id) {
-        repo.deleteById(id);
+        repo.deleteByid(id);
     }
 
 }

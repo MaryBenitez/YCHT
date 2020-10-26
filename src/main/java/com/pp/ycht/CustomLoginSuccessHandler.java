@@ -1,4 +1,4 @@
-/*package com.pp.ycht;
+package com.pp.ycht;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
@@ -41,10 +41,9 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
             url="/admin";
 
         }else if(roles.contains("USER")){
-            url = "/home";
+            url = "/admin";
         }
         return url;
 
     }
 }
-*/

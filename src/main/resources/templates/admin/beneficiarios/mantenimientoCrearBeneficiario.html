@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Registro</title>
-
+    <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -18,7 +18,7 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <form class="login100-form validate-form" action="#" th:action="@{/saveBeneficiario}" th:object="${beneficiario}"
+            <form class="login100-form validate-form" action="#" th:action="@{/admin/beneficiarios/saveBeneficiario}" th:object="${beneficiario}"
                   method="post">
                 <span class="login100-form-title p-b-34">Registrarse como<br>nuevo Beneficiario</span>
                 <div class="wrap-input100 validate-input">

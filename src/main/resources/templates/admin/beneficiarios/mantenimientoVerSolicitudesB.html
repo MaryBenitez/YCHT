@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Beneficiarios</title>
+    <base href="/">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet">
+    <link type="text/css" href="css/styles.css" rel="stylesheet">
     <!-- Fonts CSS-->
-    <link rel="stylesheet" href="css/heading.css">
-    <link rel="stylesheet" href="css/body.css">
+    <link type="text/css" rel="stylesheet" href="css/heading.css">
+    <link type="text/css" rel="stylesheet" href="css/body.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
@@ -49,8 +50,8 @@
                 <td data-th-text="${beneficiario.edadBeneficiario}"></td>
                 <td data-th-text="${beneficiario.userBeneficiario}"></td>
                 <td data-th-text="${beneficiario.descripcionBeneficiario}"></td>
-                <td><a th:href="@{'/aceptarBeneficiario/' + ${beneficiario.idBeneficiario}}" th:text="'Aceptar'" class="btn btn-outline-success"></a></td>
-                <td><a th:href="@{'/rechazarBeneficiario/' + ${beneficiario.idBeneficiario}}" th:text="'Rechazar'" class="btn btn-outline-danger"></a></td>
+                <td><a th:href="@{'/admin/beneficiarios/aceptarBeneficiario/' + ${beneficiario.idBeneficiario}}" th:text="'Aceptar'" class="btn btn-outline-success"></a></td>
+                <td><a th:href="@{'/admin/beneficiarios/rechazarBeneficiario/' + ${beneficiario.idBeneficiario}}" th:text="'Rechazar'" class="btn btn-outline-danger"></a></td>
             </tr>
             </tbody>
         </table>

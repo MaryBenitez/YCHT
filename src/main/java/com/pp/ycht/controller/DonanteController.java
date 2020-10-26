@@ -20,14 +20,13 @@ public class DonanteController {
     @Autowired
     private DonanteService service;
 
-    @RequestMapping("/donantes")
-    public String index() {
-
+    @RequestMapping("/admin/donantes")
+    public String donantes() {
         return "admin/donantes/mantenimientoDonantes";
     }
 
     //DONANTES
-    @RequestMapping("/verDonantes")
+    @RequestMapping("/admin/donantes/verDonantes")
     public String verDonantes(Model model, @Param("keyword") String keyword) {
         List<Donante> donantes = service.listAll(keyword);
         model.addAttribute("donantes", donantes);
@@ -37,7 +36,7 @@ public class DonanteController {
     }
 
     //Crear
-    @RequestMapping("/newDonante")
+    @RequestMapping("/admin/donantes/newDonante")
     public String newDonante(Model model) {
         Donante donante = new Donante();
         model.addAttribute("donante", donante);
@@ -46,7 +45,7 @@ public class DonanteController {
     }
 
     //Guardar/Actualizar
-    @RequestMapping(value = "/saveDonante", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/donantes/saveDonante", method = RequestMethod.POST)
     public String saveDonante(@ModelAttribute("donante") Donante donante) {
         service.save(donante);
 
@@ -54,7 +53,7 @@ public class DonanteController {
     }
 
     //Editar
-    @RequestMapping("/editDonante/{id}")
+    @RequestMapping("/admin/donantes/editDonante/{id}")
     public ModelAndView editDonantes(@PathVariable(name = "id") int id) {
         ModelAndView mav = new ModelAndView("admin/donantes/mantenimientoEditarDonante");
         Donante donante = service.get(id);
@@ -64,10 +63,10 @@ public class DonanteController {
     }
 
     //Borrar
-    @RequestMapping("/deleteDonante/{id}")
+    @RequestMapping("/admin/donantes/deleteDonante/{id}")
     public String deleteDonante(@PathVariable(name = "id") int id) {
         service.delete(id);
-        return "redirect:/verDonantes";
+        return "redirect:/admin/donantes/verDonantes";
     }
 
 }

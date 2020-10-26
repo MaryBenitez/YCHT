@@ -8,7 +8,7 @@ public class Beneficiario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="pk_idbeneficiario")
+    @Column(name="idbeneficiario")
     private int idBeneficiario;
 
     @Column(name="nombre")
@@ -29,18 +29,10 @@ public class Beneficiario {
     @Column(name="contrasenia_usuario")
     private String passBeneficiario;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "rol_usuario", joinColumns = @JoinColumn(name = "pk_idbeneficiario"), inverseJoinColumns = @JoinColumn(name = "id_rol"))
-    private Set<Rol> roles;
-
     public Beneficiario() {
     }
 
-    public Beneficiario(Set<Rol> roles) {
-        this.roles = roles;
-    }
-
-    public Beneficiario(int idBeneficiario, String nombreBeneficiario, String descripcionBeneficiario, int edadBeneficiario, boolean estadoBeneficiario, String userBeneficiario, String passBeneficiario, Set<Rol> roles) {
+    public Beneficiario(int idBeneficiario, String nombreBeneficiario, String descripcionBeneficiario, int edadBeneficiario, boolean estadoBeneficiario, String userBeneficiario, String passBeneficiario) {
         this.idBeneficiario = idBeneficiario;
         this.nombreBeneficiario = nombreBeneficiario;
         this.descripcionBeneficiario = descripcionBeneficiario;
@@ -48,7 +40,7 @@ public class Beneficiario {
         this.estadoBeneficiario = estadoBeneficiario;
         this.userBeneficiario = userBeneficiario;
         this.passBeneficiario = passBeneficiario;
-        this.roles = roles;
+
     }
 
     public int getIdBeneficiario() {
@@ -105,13 +97,5 @@ public class Beneficiario {
 
     public void setDescripcionBeneficiario(String descripcionBeneficiario) {
         this.descripcionBeneficiario = descripcionBeneficiario;
-    }
-
-    public Set<Rol> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Rol> roles) {
-        this.roles = roles;
     }
 }

@@ -20,20 +20,20 @@ public class BeneficiarioController {
     @Autowired
     private BeneficiarioService service;
 
-    @RequestMapping("/beneficiarios")
+    @RequestMapping("/admin/beneficiarios")
     public String index() {
 
         return "admin/beneficiarios/mantenimientoBeneficiarios";
     }
     //Listado soli
-    @RequestMapping("/solicitudesB")
+    @RequestMapping("/admin/beneficiarios/solicitudesB")
     public String verSolicitudesB(Model model) {
         model.addAttribute("beneficiarios", service.listSoli());
         return "admin/beneficiarios/mantenimientoVerSolicitudesB";
     }
     
     //aceptar solis
-    @RequestMapping("/aceptarBeneficiario/{id}")
+    @RequestMapping("/admin/beneficiarios/aceptarBeneficiario/{id}")
     public String aceptarBeneficiario(@PathVariable(name = "id") int id, Model model) {
 
         Beneficiario beneficiario = service.get(id);
@@ -41,25 +41,25 @@ public class BeneficiarioController {
         List<Beneficiario> beneficiarios = service.listSoli();
         model.addAttribute("beneficiario", beneficiarios);
 
-        return "redirect:/solicitudesB";
+        return "redirect:/admin/beneficiarios/solicitudesB";
     }
     //Rechazar solicitudes
-    @RequestMapping("/rechazarBeneficiario/{id}")
+    @RequestMapping("/admin/beneficiarios/rechazarBeneficiario/{id}")
     public String rechazarBeneficiario(@PathVariable(name = "id") int id) {
         service.delete(id);
 
-        return "redirect:/solicitudesB";
+        return "redirect:/admin/beneficiarios/solicitudesB";
     }
 
     //Beneficiarios
-    @RequestMapping("/verBeneficiarios")
+    @RequestMapping("/admin/beneficiarios/verBeneficiarios")
     public String verBeneficiarios(Model model) {
         model.addAttribute("beneficiarios", service.listAll());
         return "admin/beneficiarios/mantenimientoVerBeneficiarios";
     }
 
     //Crear
-    @RequestMapping("/newBeneficiario")
+    @RequestMapping("/admin/beneficiarios/newBeneficiario")
     public String newBeneficiario(Model model) {
         Beneficiario beneficiario = new Beneficiario();
         model.addAttribute("beneficiario", beneficiario);
@@ -68,7 +68,7 @@ public class BeneficiarioController {
     }
 
     //Guardar/Actualizar
-    @RequestMapping(value = "/saveBeneficiario", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/beneficiarios/saveBeneficiario", method = RequestMethod.POST)
     public String saveBeneficiario(@ModelAttribute("beneficiario") Beneficiario beneficiario) {
         service.save(beneficiario);
 
@@ -76,7 +76,7 @@ public class BeneficiarioController {
     }
 
     //Editar
-    @RequestMapping("/editBeneficiario/{id}")
+    @RequestMapping("/admin/beneficiarios/editBeneficiario/{id}")
     public ModelAndView showEditProductPage(@PathVariable(name = "id") int id) {
         ModelAndView mav = new ModelAndView("admin/beneficiarios/mantenimientoEditarBeneficiario");
         Beneficiario beneficiario = service.get(id);
@@ -86,10 +86,10 @@ public class BeneficiarioController {
     }
 
     //Borrar
-    @RequestMapping("/deleteBeneficiario/{id}")
+    @RequestMapping("/admin/beneficiarios/deleteBeneficiario/{id}")
     public String deleteBeneficiario(@PathVariable(name = "id") int id) {
         service.delete(id);
-        return "redirect:/verBeneficiarios";
+        return "redirect:/admin/beneficiarios/verBeneficiarios";
     }
 
 

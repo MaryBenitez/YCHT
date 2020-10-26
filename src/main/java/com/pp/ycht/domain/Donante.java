@@ -4,11 +4,13 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name = "donante")
 public class Donante {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="pk_iddonante")
+    @GeneratedValue(generator = "donante_iddonante_seq", strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "donante_iddonante_seq", sequenceName = "public.donante_iddonante_seq", allocationSize = 1)
+    @Column(name="iddonante")
     private int idDonante;
 
     @Column(name="nombre")
@@ -24,25 +26,25 @@ public class Donante {
     private boolean estadoDonante;
 
     @Column(name="nombre_usuario")
-    private String userDonante;
+    private String username;
 
     @Column(name="contrasenia_usuario")
-    private String passDonante;
+    private String pass;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "rol_usuario", joinColumns = @JoinColumn(name = "pk_iddonante"), inverseJoinColumns = @JoinColumn(name = "id_rol"))
+    @JoinTable(name = "rol_donante", joinColumns = @JoinColumn(name = "iddonante"), inverseJoinColumns = @JoinColumn(name = "id_rol"))
     private Set<Rol> roles;
 
-    public Donante() {
-    }
+    public Donante() {}
 
-    public Donante(int idDonante, String nombreDonante, String apellidoDonante, int edadDonante, boolean estadoDonante, String userDonante, String passDonante, Set<Rol> roles) {        this.idDonante = idDonante;
+    public Donante(int idDonante, String nombreDonante, String apellidoDonante, int edadDonante, boolean estadoDonante, String username, String pass, Set<Rol> roles) {
+        this.idDonante = idDonante;
         this.nombreDonante = nombreDonante;
         this.apellidoDonante = apellidoDonante;
         this.edadDonante = edadDonante;
         this.estadoDonante = estadoDonante;
-        this.userDonante = userDonante;
-        this.passDonante = passDonante;
+        this.username = username;
+        this.pass = pass;
         this.roles = roles;
     }
 
@@ -86,20 +88,20 @@ public class Donante {
         this.estadoDonante = estadoDonante;
     }
 
-    public String getUserDonante() {
-        return userDonante;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserDonante(String userDonante) {
-        this.userDonante = userDonante;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getPassDonante() {
-        return passDonante;
+    public String getPass() {
+        return pass;
     }
 
-    public void setPassDonante(String passDonante) {
-        this.passDonante = passDonante;
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 
     public Set<Rol> getRoles() {

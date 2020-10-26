@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Registro de Donantes</title>
-
+    <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -19,7 +19,7 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <form class="login100-form" action="#" th:action="@{/saveDonante}" th:object="${donante}" method="post">
+            <form class="login100-form" th:action="@{/admin/donantes/saveDonante}" th:object="${donante}" method="post">
 
                 <span class="login100-form-title p-b-34">Regístrate como Donante</span>
                 <div class="wrap-input100 validate-input">
@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="wrap-input100 validate-input">
-                    <input class="input100" type="text" th:field="*{userDonante}" placeholder="Username">
+                    <input class="input100" type="text" th:field="*{username}" placeholder="Username">
                     <span class="focus-input100"></span>
                 </div>
                     <div class="container">
@@ -56,7 +56,7 @@
                         </div>
                     </div>
                 <div class="wrap-input100 validate-input">
-                    <input class="input100" type="password" th:field="*{passDonante}" placeholder="Contraseña">
+                    <input class="input100" type="password" th:field="*{pass}" placeholder="Contraseña">
                     <span class="focus-input100"></span>
                 </div>
                         <div class="container">

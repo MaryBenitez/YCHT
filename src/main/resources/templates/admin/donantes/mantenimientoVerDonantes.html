@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Donantes - Admin</title>
+    <base href="/">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
     <!-- Fonts CSS-->
-    <link rel="stylesheet" href="css/heading.css">
-    <link rel="stylesheet" href="css/body.css">
+    <link rel="stylesheet" href="css/heading.css" type="text/css">
+    <link rel="stylesheet" href="css/body.css" type="text/css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
@@ -30,7 +31,7 @@
     <section class="page-section portfolio" id="portfolio">
         <div class="container">
             <h2>Listado de donantes</h2>
-            <form th:action="@{/verDonantes}">
+            <form th:action="@{/admin/donantes/verDonantes}">
                 Filtro: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
                 &nbsp;
                 <input class="btn btn-info" type="submit" value="Buscar" />
@@ -52,9 +53,9 @@
                 <!--    <td data-th-text="${donante.idDonante}"></td>-->
                     <td data-th-text="${donante.nombreDonante}"></td>
                     <td data-th-text="${donante.apellidoDonante}"></td>
-                    <td data-th-text="${donante.userDonante}"></td>
-                    <td><a th:href="@{'/editDonante/' + ${donante.idDonante}}" th:text="'Editar'" class="btn btn-outline-success"></a></td>
-                    <td><a th:href="@{'/deleteDonante/' + ${donante.idDonante}}" th:text="'Eliminar'" class="btn btn-outline-danger"></a></td>
+                    <td data-th-text="${donante.username}"></td>
+                    <td><a th:href="@{'/admin/donantes/editDonante/' + ${donante.idDonante}}" th:text="'Editar'" class="btn btn-outline-success"></a></td>
+                    <td><a th:href="@{'/admin/donantes/deleteDonante/' + ${donante.idDonante}}" th:text="'Eliminar'" class="btn btn-outline-danger"></a></td>
                 </tr>
                 </tbody>
             </table>

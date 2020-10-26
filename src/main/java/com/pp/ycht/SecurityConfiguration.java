@@ -1,4 +1,4 @@
-/*package com.pp.ycht;
+package com.pp.ycht;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -43,18 +43,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/register").permitAll()
+                .antMatchers("/newDonante").permitAll()
                 .antMatchers("/admin/**").permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().anonymous()
                 .and()
 
-                //form loginDonante
+                //form login
                 .csrf().disable().formLogin()
                 .loginPage("/login")
                 .failureUrl("/login?error=true")
                 .successHandler(customLoginSuccessHandler)
-                .usernameParameter("userDonante")
-                .passwordParameter("passDonante")
+                .usernameParameter("username")
+                .passwordParameter("pass")
                 .and()
 
                 //logout
@@ -63,10 +63,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/").and()
                 .exceptionHandling()
                 .accessDeniedPage("/access-denied");
-    }
+    }/*
     @Override
     public void configure(WebSecurity web) throws Exception{
         web.ignoring().antMatchers("/resources/**","/static/**","/css/**","/js/**","/images/**","/fonts/**");
-    }
+    }*/
 }
-*/
+

@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Beneficiarios</title>
+    <base href="/">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet">
+    <link type="text/css" href="css/styles.css" rel="stylesheet">
     <!-- Fonts CSS-->
-    <link rel="stylesheet" href="css/heading.css">
-    <link rel="stylesheet" href="css/body.css">
+    <link type="text/css" rel="stylesheet" href="css/heading.css">
+    <link type="text/css" rel="stylesheet" href="css/body.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
@@ -38,7 +39,7 @@
         <div class="row justify-content-center">
             <!-- Portfolio Items-->
             <div class="col-md-6 col-lg-4 mb-5">
-                <a th:href="@{verBeneficiarios}">
+                <a th:href="@{/admin/beneficiarios/verBeneficiarios}">
                     <div class="portfolio-item mx-auto">
                         <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                             <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
@@ -48,7 +49,7 @@
                 </a>
             </div>
             <div class="col-md-6 col-lg-4 mb-5">
-                <a th:href="@{solicitudesB}">
+                <a th:href="@{/admin/beneficiarios/solicitudesB}">
                     <div class="portfolio-item mx-auto">
                         <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                             <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>

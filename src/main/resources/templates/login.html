@@ -59,26 +59,12 @@
                     sea más rápida, efectiva y accesible.</p>
             </div>
             <div class="modal-footer">
-                <a th:href="@{/admin/donantes/newDonante}" th:text="'Donante'" class="btn btn-info"></a>
-                <a th:href="@{/admin/beneficiarios/newBeneficiario}" th:text="'Beneficiario'" class="btn btn-info"></a>
+                <a th:href="@{/donantes/newDonante}" th:text="'Donante'" class="btn btn-info"></a>
+                <a th:href="@{/beneficiarios/newBeneficiario}" th:text="'Beneficiario'" class="btn btn-info"></a>
                 <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
 </div>
-<script th:inline="javascript">
-    /*<![CDATA[*/
-
-    var varr = /*[[${param.error}]]*/ 'default';
-    if(varr){
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Usuario o Contraseña incorrectos',
-        })
-    }
-
-    /*]]>*/
-</script>
 </body>
 </html>

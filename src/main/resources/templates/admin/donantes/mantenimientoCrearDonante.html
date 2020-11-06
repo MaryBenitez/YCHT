@@ -19,7 +19,7 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <form class="login100-form" th:action="@{/admin/donantes/saveDonante}" th:object="${donante}" method="post">
+            <form class="login100-form" th:action="@{/donantes/saveDonante}" th:object="${donante}" method="post" >
 
                 <span class="login100-form-title p-b-34">Regístrate como Donante</span>
                 <div class="wrap-input100 validate-input">
@@ -45,28 +45,6 @@
                     </div>
                 </div>
                 <div class="wrap-input100 validate-input">
-                    <input class="input100" type="text" th:field="*{username}" placeholder="Username">
-                    <span class="focus-input100"></span>
-                </div>
-                    <div class="container">
-                        <div class="row align-items-start">
-                            <div class="col"><font color="white">.</font></div>
-                            <div class="col"><font color="white">.</font></div>
-                            <div class="col"><font color="white">.</font></div>
-                        </div>
-                    </div>
-                <div class="wrap-input100 validate-input">
-                    <input class="input100" type="password" th:field="*{pass}" placeholder="Contraseña">
-                    <span class="focus-input100"></span>
-                </div>
-                        <div class="container">
-                            <div class="row align-items-start">
-                                <div class="col"><font color="white">.</font></div>
-                                <div class="col"><font color="white">.</font></div>
-                                <div class="col"><font color="white">.</font></div>
-                            </div>
-                        </div>
-                <div class="wrap-input100 validate-input">
                     <input class="input100" type="number" th:field="*{edadDonante}" placeholder="Edad">
                     <span class="focus-input100"></span>
                 </div>
@@ -77,7 +55,7 @@
                             <div class="col"><font color="white">.</font></div>
                         </div>
                 <div class="container-login100-form-btn">
-                    <button class="btn login100-form-btn btn-success">Registrarme</button>
+                    <button class="btn login100-form-btn btn-success">Siguiente</button>
                 </div>
             </form>
             <div class="login100-more" style="background-image:url('images/login_registro/registrobeneficiario.png');"></div>

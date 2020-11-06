@@ -35,21 +35,21 @@
         <table class="table">
             <thead>
             <tr>
-                <th>Firstname</th>
-                <th>YearFundation</th>
-                <th>User</th>
-                <th>Description</th>
+                <th>No</th>
+                <th>Fundacion</th>
+                <th>Año de Inicio</th>
+                <th>Descripcion</th>
                 <th></th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr data-th-each="beneficiario: ${beneficiarios}">
+            <tr th:each="beneficiario, beneficiarioStatus: ${beneficiarios}">
                 <!--    <td data-th-text="${donante.idDonante}"></td>-->
-                <td data-th-text="${beneficiario.nombreBeneficiario}"></td>
-                <td data-th-text="${beneficiario.edadBeneficiario}"></td>
-                <td data-th-text="${beneficiario.userBeneficiario}"></td>
-                <td data-th-text="${beneficiario.descripcionBeneficiario}"></td>
+                <td th:text="${beneficiarioStatus.count}">1</td>
+                <td th:text="${beneficiario.nombreBeneficiario}"></td>
+                <td th:text="${beneficiario.edadBeneficiario}"></td>
+                <td th:text="${beneficiario.descripcionBeneficiario}"></td>
                 <td><a th:href="@{'/admin/beneficiarios/editBeneficiario/' + ${beneficiario.idBeneficiario}}" th:text="'Editar'" class="btn btn-outline-success"></a></td>
                 <td><a th:href="@{'/admin/beneficiarios/deleteBeneficiario/' + ${beneficiario.idBeneficiario}}" th:text="'Eliminar'" class="btn btn-outline-danger"></a></td>
             </tr>

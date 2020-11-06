@@ -22,30 +22,13 @@ public class Donante {
     @Column(name="edad")
     private int edadDonante;
 
-    @Column(name="estado")
-    private boolean estadoDonante;
-
-    @Column(name="nombre_usuario")
-    private String username;
-
-    @Column(name="contrasenia_usuario")
-    private String pass;
-
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "rol_donante", joinColumns = @JoinColumn(name = "iddonante"), inverseJoinColumns = @JoinColumn(name = "id_rol"))
-    private Set<Rol> roles;
-
     public Donante() {}
 
-    public Donante(int idDonante, String nombreDonante, String apellidoDonante, int edadDonante, boolean estadoDonante, String username, String pass, Set<Rol> roles) {
+    public Donante(int idDonante, String nombreDonante, String apellidoDonante, int edadDonante) {
         this.idDonante = idDonante;
         this.nombreDonante = nombreDonante;
         this.apellidoDonante = apellidoDonante;
         this.edadDonante = edadDonante;
-        this.estadoDonante = estadoDonante;
-        this.username = username;
-        this.pass = pass;
-        this.roles = roles;
     }
 
     public int getIdDonante() {
@@ -80,35 +63,4 @@ public class Donante {
         this.edadDonante = edadDonante;
     }
 
-    public boolean isEstadoDonante() {
-        return estadoDonante;
-    }
-
-    public void setEstadoDonante(boolean estadoDonante) {
-        this.estadoDonante = estadoDonante;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
-
-    public Set<Rol> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Rol> roles) {
-        this.roles = roles;
-    }
 }

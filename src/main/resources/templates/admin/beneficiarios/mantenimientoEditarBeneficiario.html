@@ -9,14 +9,12 @@
 <div align="center">
     <h1>Edit Beneficiario</h1>
     <br />
-    <form action="#" th:action="@{/saveBeneficiario}" th:object="${beneficiario}"
-          method="post">
+    <form action="#" th:action="@{/admin/beneficiarios/updatebeneficiario}" th:object="${beneficiario}" method="post">
 
         <table border="0" cellpadding="10">
             <tr>
-                <td>Beneficiario ID:</td>
                 <td>
-                    <input type="text" th:field="*{idBeneficiario}" readonly="readonly" />
+                    <input type="hidden" th:field="*{idBeneficiario}" readonly="readonly" />
                 </td>
             </tr>
             <tr>
@@ -32,15 +30,7 @@
                 <td><input type="text" th:field="*{edadBeneficiario}" /></td>
             </tr>
             <tr>
-                <td>User:</td>
-                <td><input type="text" th:field="*{userBeneficiario}" /></td>
-            </tr>
-            <tr>
-                <td>Contraseña:</td>
-                <td><input type="text" th:field="*{passBeneficiario}" /></td>
-            </tr>
-            <tr>
-                <td colspan="2"><button type="submit">Guardar</button> </td>
+                <td colspan="2"><button type="submit">Actualizar</button> </td>
             </tr>
         </table>
     </form>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Login Admin - YCHT</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic">
+    <link rel="stylesheet" href="fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="css/body.css">
+    <link rel="stylesheet" href="css/heading.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+        <div class="container" style="margin-top: 100px">
+            <div align="center">
+                <img width="200" height="200" src="images/YCHT.jpg">
+            </div>
+            <br>
+            <h1 style="text-align: center">Módulo administrador</h1>
+            <br>
+            <form  th:action="@{/loginAdmin}" method="post">
+                <div align="center">
+                    <small style="padding-right: 16px;">Usuario</small>
+                    <input type="text" id="username" name="username" style="height: 30px; align-content: end;">
+                </div>
+                <br>
+                <div align="center">
+                    <small>Contraseña&nbsp;</small>
+                    <input type="password" name="pass" id="pass" style="height: 30px; align-content: end;">
+                </div>
+                <br>
+                <div align="center">
+                    <button style="background-color: #e4606d; color: white" class="btn">Iniciar Sesion</button>
+                    <a class="btn btn-primary" type="button" style="background-color: #e4606d; color: white"
+                       th:href="@{/administrador/newAdmin}">Nuevo Administrador</a>
+                </div>
+            </form>
+        </div>
+</body>
+
+</html>

@@ -1,10 +1,14 @@
 package com.pp.ycht.controller;
 
 import com.pp.ycht.domain.Beneficiario;
+import com.pp.ycht.domain.Donante;
+import com.pp.ycht.domain.Usuario;
 import com.pp.ycht.service.BeneficiarioService;
+import com.pp.ycht.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,17 +22,20 @@ public class BeneficiarioController {
 
 
     @Autowired
-    private BeneficiarioService service;
+    private BeneficiarioService serviceBeneficiario;
+
+    @Autowired
+    private UsuarioService serviceUsuario;
 
     @RequestMapping("/admin/beneficiarios")
-    public String index() {
-
+    public String beneficiarios() {
         return "admin/beneficiarios/mantenimientoBeneficiarios";
     }
+
     //Listado soli
     @RequestMapping("/admin/beneficiarios/solicitudesB")
     public String verSolicitudesB(Model model) {
-        model.addAttribute("beneficiarios", service.listSoli());
+        model.addAttribute("beneficiarios", serviceBeneficiario.listSoli());
         return "admin/beneficiarios/mantenimientoVerSolicitudesB";
     }
     
@@ -36,9 +43,9 @@ public class BeneficiarioController {
     @RequestMapping("/admin/beneficiarios/aceptarBeneficiario/{id}")
     public String aceptarBeneficiario(@PathVariable(name = "id") int id, Model model) {
 
-        Beneficiario beneficiario = service.get(id);
+        Beneficiario beneficiario = serviceBeneficiario.get(id);
         beneficiario.setEstadoBeneficiario(true);
-        List<Beneficiario> beneficiarios = service.listSoli();
+        List<Beneficiario> beneficiarios = serviceBeneficiario.listSoli();
         model.addAttribute("beneficiario", beneficiarios);
 
         return "redirect:/admin/beneficiarios/solicitudesB";
@@ -46,20 +53,24 @@ public class BeneficiarioController {
     //Rechazar solicitudes
     @RequestMapping("/admin/beneficiarios/rechazarBeneficiario/{id}")
     public String rechazarBeneficiario(@PathVariable(name = "id") int id) {
-        service.delete(id);
-
+        serviceBeneficiario.deleteBeneficiario(id);
         return "redirect:/admin/beneficiarios/solicitudesB";
     }
 
-    //Beneficiarios
+    //BENEFICIARIO VISTA
     @RequestMapping("/admin/beneficiarios/verBeneficiarios")
-    public String verBeneficiarios(Model model) {
-        model.addAttribute("beneficiarios", service.listAll());
+    public String verBeneficiarios(ModelMap modelMap) {
+        List<Beneficiario> beneficiarios = serviceBeneficiario.listAll();
+        List<Usuario> usuarios = serviceUsuario.listAll();
+        modelMap.addAttribute("beneficiarios", beneficiarios);
+        modelMap.addAttribute("usuarios", usuarios);
+
+
         return "admin/beneficiarios/mantenimientoVerBeneficiarios";
     }
 
-    //Crear
-    @RequestMapping("/admin/beneficiarios/newBeneficiario")
+    //Crear Beneficiario VISTA
+    @RequestMapping("/beneficiarios/newBeneficiario")
     public String newBeneficiario(Model model) {
         Beneficiario beneficiario = new Beneficiario();
         model.addAttribute("beneficiario", beneficiario);
@@ -67,19 +78,42 @@ public class BeneficiarioController {
         return "admin/beneficiarios/mantenimientoCrearBeneficiario";
     }
 
-    //Guardar/Actualizar
-    @RequestMapping(value = "/admin/beneficiarios/saveBeneficiario", method = RequestMethod.POST)
-    public String saveBeneficiario(@ModelAttribute("beneficiario") Beneficiario beneficiario) {
-        service.save(beneficiario);
+    //Crear Usuario VISTA
+    @RequestMapping("/beneficiario/newUserBeneficiario")
+    public String newUserBeneficiario(Model model) {
+        Usuario usuario = new Usuario();
+        model.addAttribute("usuario", usuario);
 
+        return "admin/beneficiarios/mantenimientoCrearUsuarioBeneficiario";
+    }
+
+    //Guardar datos Beneficiario
+    @RequestMapping(value = "/beneficiarios/saveBeneficiario", method = RequestMethod.POST)
+    public String saveBeneficiario(@ModelAttribute("beneficiario") Beneficiario beneficiario) {
+        serviceBeneficiario.saveBeneficiario(beneficiario);
+
+        return "redirect:/beneficiario/newUserBeneficiario";
+    }
+
+    //Guardar Usuario
+    @RequestMapping(value = "/beneficiarios/saveUsuarioB", method = RequestMethod.POST)
+    public String saveUserBeneficiario(@ModelAttribute("usuario") Usuario usuario) {
+        serviceUsuario.saveUserBeneficiario(usuario);
         return "redirect:/login";
     }
 
-    //Editar
+    //Actualizar Beneficiario
+    @RequestMapping(value = "/admin/beneficiarios/updatebeneficiario", method = RequestMethod.POST)
+    public String updateBeneficiario(@ModelAttribute("beneficiario") Beneficiario beneficiario) {
+        serviceBeneficiario.saveBeneficiario(beneficiario);
+        return "redirect:/admin/beneficiarios/verBeneficiarios";
+    }
+
+    //Editar datos Beneficiario
     @RequestMapping("/admin/beneficiarios/editBeneficiario/{id}")
-    public ModelAndView showEditProductPage(@PathVariable(name = "id") int id) {
+    public ModelAndView Editbeneficiario(@PathVariable(name = "id") int id) {
         ModelAndView mav = new ModelAndView("admin/beneficiarios/mantenimientoEditarBeneficiario");
-        Beneficiario beneficiario = service.get(id);
+        Beneficiario beneficiario = serviceBeneficiario.get(id);
         mav.addObject("beneficiario", beneficiario);
 
         return mav;
@@ -88,7 +122,7 @@ public class BeneficiarioController {
     //Borrar
     @RequestMapping("/admin/beneficiarios/deleteBeneficiario/{id}")
     public String deleteBeneficiario(@PathVariable(name = "id") int id) {
-        service.delete(id);
+        serviceBeneficiario.deleteBeneficiario(id);
         return "redirect:/admin/beneficiarios/verBeneficiarios";
     }
 

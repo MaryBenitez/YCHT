@@ -7,16 +7,14 @@
 </head>
 <body>
 <div align="center">
-    <h1>Edit Donante</h1>
+    <h1>Editar datos personales</h1>
     <br />
-    <form action="#" th:action="@{/saveDonante}" th:object="${donante}"
-          method="post">
+    <form th:action="@{/admin/donantes/updateDonante}" th:object="${donante}" method="post">
 
         <table border="0" cellpadding="10">
             <tr>
-                <td>Donador ID:</td>
                 <td>
-                    <input type="text" th:field="*{idDonante}" readonly="readonly" />
+                    <input type="hidden" th:field="*{idDonante}" readonly="readonly" />
                 </td>
             </tr>
             <tr>
@@ -33,6 +31,7 @@
                 <td>Edad:</td>
                 <td><input type="text" th:field="*{edadDonante}" /></td>
             </tr>
+
             <tr>
                 <td colspan="2"><button type="submit">Actualizar</button> </td>
             </tr>

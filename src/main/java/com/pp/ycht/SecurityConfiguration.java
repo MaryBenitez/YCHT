@@ -43,9 +43,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/newDonante").permitAll()
-                .antMatchers("/admin/**").permitAll()
+                .antMatchers("/donantes/newDonante").permitAll()
+                .antMatchers("/beneficiarios/newBeneficiario").permitAll()
+                .antMatchers("/donantes/newUserDonante").permitAll()
+                .antMatchers("/beneficiario/newUserBeneficiario").permitAll()
+                .antMatchers("/loginAdmin").permitAll()
+                .antMatchers("/administrador/newAdmin").permitAll()
+                .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
                 .anyRequest().anonymous()
+                .and()
+
+                //form login Administrador
+                .csrf().disable().formLogin()
+                .loginPage("/loginAdmin")
+                .failureUrl("/loginAdmin?error=true")
+                .successHandler(customLoginSuccessHandler)
+                .usernameParameter("username")
+                .passwordParameter("pass")
                 .and()
 
                 //form login
@@ -57,16 +71,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .passwordParameter("pass")
                 .and()
 
+
+
                 //logout
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/").and()
                 .exceptionHandling()
                 .accessDeniedPage("/access-denied");
-    }/*
+    }
     @Override
     public void configure(WebSecurity web) throws Exception{
         web.ignoring().antMatchers("/resources/**","/static/**","/css/**","/js/**","/images/**","/fonts/**");
-    }*/
+    }
 }
 

@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name = "beneficiario")
 public class Beneficiario {
 
     @Id
@@ -23,24 +24,15 @@ public class Beneficiario {
     @Column(name="estado")
     private boolean estadoBeneficiario;
 
-    @Column(name="nombre_usuario")
-    private String userBeneficiario;
-
-    @Column(name="contrasenia_usuario")
-    private String passBeneficiario;
-
     public Beneficiario() {
     }
 
-    public Beneficiario(int idBeneficiario, String nombreBeneficiario, String descripcionBeneficiario, int edadBeneficiario, boolean estadoBeneficiario, String userBeneficiario, String passBeneficiario) {
+    public Beneficiario(int idBeneficiario, String nombreBeneficiario, String descripcionBeneficiario, int edadBeneficiario, boolean estadoBeneficiario) {
         this.idBeneficiario = idBeneficiario;
         this.nombreBeneficiario = nombreBeneficiario;
         this.descripcionBeneficiario = descripcionBeneficiario;
         this.edadBeneficiario = edadBeneficiario;
         this.estadoBeneficiario = estadoBeneficiario;
-        this.userBeneficiario = userBeneficiario;
-        this.passBeneficiario = passBeneficiario;
-
     }
 
     public int getIdBeneficiario() {
@@ -59,6 +51,14 @@ public class Beneficiario {
         this.nombreBeneficiario = nombreBeneficiario;
     }
 
+    public String getDescripcionBeneficiario() {
+        return descripcionBeneficiario;
+    }
+
+    public void setDescripcionBeneficiario(String descripcionBeneficiario) {
+        this.descripcionBeneficiario = descripcionBeneficiario;
+    }
+
     public int getEdadBeneficiario() {
         return edadBeneficiario;
     }
@@ -73,29 +73,5 @@ public class Beneficiario {
 
     public void setEstadoBeneficiario(boolean estadoBeneficiario) {
         this.estadoBeneficiario = estadoBeneficiario;
-    }
-
-    public String getUserBeneficiario() {
-        return userBeneficiario;
-    }
-
-    public void setUserBeneficiario(String userBeneficiario) {
-        this.userBeneficiario = userBeneficiario;
-    }
-
-    public String getPassBeneficiario() {
-        return passBeneficiario;
-    }
-
-    public void setPassBeneficiario(String passBeneficiario) {
-        this.passBeneficiario = passBeneficiario;
-    }
-
-    public String getDescripcionBeneficiario() {
-        return descripcionBeneficiario;
-    }
-
-    public void setDescripcionBeneficiario(String descripcionBeneficiario) {
-        this.descripcionBeneficiario = descripcionBeneficiario;
     }
 }

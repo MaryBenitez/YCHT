@@ -20,26 +20,14 @@ public class AdminController {
     @Autowired
     private UsuarioService serviceUsuario;
 
-    //Login Administrador VISTA
-    @RequestMapping("/loginAdministrador")
-    public String loginAdminView() {
-        return "admin/loginAdmin";
-    }
-
     //Principal de Mantenimiento VISTA
     @RequestMapping("/admin")
     public String home() {
         return "admin/mantenimiento";
     }
 
-    //Login de Administrador
-    @GetMapping(value = {"/loginAdmin"})
-    public String loginAdmin(Principal principal){
-        return principal == null ? "loginAdmin" : "redirect:/admin";
-    }
-
     //Nuevo Administrador VISTA
-    @RequestMapping("/administrador/newAdmin")
+    @RequestMapping("/admin/newAdmin")
     public String registroAdmin(Model model) {
         Usuario usuario = new Usuario();
         model.addAttribute("usuario", usuario);
@@ -47,9 +35,9 @@ public class AdminController {
     }
 
     //Guardar Usuario
-    @RequestMapping(value = "/administrador/saveAdmin", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/newAdmin/saveAdmin", method = RequestMethod.POST)
     public String saveAdmin(@ModelAttribute("usuario") Usuario usuario) {
         serviceUsuario.saveAdmin(usuario);
-        return "redirect:/loginAdministrador";
+        return "redirect:/admin";
     }
 }

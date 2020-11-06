@@ -47,19 +47,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/beneficiarios/newBeneficiario").permitAll()
                 .antMatchers("/donantes/newUserDonante").permitAll()
                 .antMatchers("/beneficiario/newUserBeneficiario").permitAll()
-                .antMatchers("/loginAdmin").permitAll()
-                .antMatchers("/administrador/newAdmin").permitAll()
                 .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
                 .anyRequest().anonymous()
-                .and()
-
-                //form login Administrador
-                .csrf().disable().formLogin()
-                .loginPage("/loginAdmin")
-                .failureUrl("/loginAdmin?error=true")
-                .successHandler(customLoginSuccessHandler)
-                .usernameParameter("username")
-                .passwordParameter("pass")
                 .and()
 
                 //form login
@@ -71,12 +60,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .passwordParameter("pass")
                 .and()
 
-
-
                 //logout
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/").and()
+                .logoutSuccessUrl("/login").and()
                 .exceptionHandling()
                 .accessDeniedPage("/access-denied");
     }

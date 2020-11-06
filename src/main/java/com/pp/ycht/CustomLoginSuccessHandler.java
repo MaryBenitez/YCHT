@@ -44,6 +44,5 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
             url = "/";
         }
         return url;
-
     }
 }

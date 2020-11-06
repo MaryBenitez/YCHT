@@ -23,7 +23,7 @@
         <br>
         <h4 style="text-align: center">Nuevo Usuario Administrador</h4>
         <br>
-        <form th:action="@{/administrador/saveAdmin}" th:object="${usuario}" method="post">
+        <form th:action="@{/admin/newAdmin/saveAdmin}" th:object="${usuario}" method="post">
             <div align="center">
                 <small style="padding-right: 16px;">Usuario</small>
                 <input type="text" id="username" name="username" th:field="*{username}"
@@ -37,7 +37,7 @@
             </div>
             <br>
             <div align="center">
-                <button class="btn btn-success">Registrarse</button>
+                <button class="btn btn-success">Crear Nuevo Administrador</button>
             </div>
         </form>
     </div>

@@ -105,6 +105,7 @@ public class BeneficiarioController {
     //Actualizar Beneficiario
     @RequestMapping(value = "/admin/beneficiarios/updatebeneficiario", method = RequestMethod.POST)
     public String updateBeneficiario(@ModelAttribute("beneficiario") Beneficiario beneficiario) {
+        beneficiario.setEstadoBeneficiario(true);
         serviceBeneficiario.saveBeneficiario(beneficiario);
         return "redirect:/admin/beneficiarios/verBeneficiarios";
     }

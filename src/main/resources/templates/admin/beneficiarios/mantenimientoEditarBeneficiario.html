@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" >
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+    <meta charset="UTF-8">
+    <title>Editar</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="css/loginStyle.css">
 </head>
 <body>
+<<<<<<< HEAD
 <div align="center">
     <h1>Edit Beneficiario</h1>
     <br />
@@ -34,6 +44,60 @@
             </tr>
         </table>
     </form>
+=======
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <form class="login100-form validate-form" action="#" th:action="@{saveBeneficiario}"
+                  th:object="${beneficiario}" method="post">
+                <span class="login100-form-title p-b-34">Editar Beneficiario</span>
+                <input class="input100" type="hidden" readonly="readonly" th:field="*{idBeneficiario}" />
+                <br><p>Nombre de la fundación</p>
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="text" th:field="*{nombreBeneficiario}" />
+                    <span class="focus-input100"></span>
+                </div>
+                <div class="container">
+                    <div class="row align-items-start">
+                        <div class="col"><font color="white">.</font></div>
+                        <div class="col"><font color="white">.</font></div>
+                        <div class="col"><font color="white">.</font></div>
+                    </div>
+                </div>
+                <br><p>Descripción</p>
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="text" th:field="*{descripcionBeneficiario}" />
+                    <span class="focus-input100"></span>
+                </div>
+                <div class="container">
+                    <div class="row align-items-start">
+                        <div class="col"><font color="white">.</font></div>
+                        <div class="col"><font color="white">.</font></div>
+                        <div class="col"><font color="white">.</font></div>
+                    </div>
+                </div>
+                <br><p>Año de fundación</p>
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="text" th:field="*{edadBeneficiario}" />
+                    <span class="focus-input100"></span>
+                </div>
+                <div class="container">
+                    <div class="row align-items-start">
+                        <div class="col"><font color="white">.</font></div>
+                        <div class="col"><font color="white">.</font></div>
+                        <div class="col"><font color="white">.</font></div>
+                    </div>
+                </div>
+                <input type="hidden" readonly="readonly" th:field="*{userBeneficiario}" />
+                <input type="hidden" readonly="readonly" th:field="*{passBeneficiario}" />
+                <div class="container-login100-form-btn">
+                    <button class="btn login100-form-btn btn-success" type="submit">Actualizar</button>
+                </div>
+            </form>
+            <div class="login100-more" style="background-image: url('images/login_registro/editarBeneficiarioyDonante.png');"></div>
+        </div>
+    </div>
+>>>>>>> front
 </div>
 </body>
 </html>

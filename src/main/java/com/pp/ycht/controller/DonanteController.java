@@ -26,6 +26,14 @@ public class DonanteController {
     @Autowired
     private UsuarioService serviceUsuario;
 
+    //////////////////PRINCIPAL//////////////////////////
+    /*@RequestMapping("/donantes")
+    public String donantes1() {
+        return "indexDonantes";
+    }*/
+
+
+    //////////////////ADMIN/////////////////////////////
     @RequestMapping("/admin/donantes")
     public String donantes() {
         return "admin/donantes/mantenimientoDonantes";
@@ -99,5 +107,6 @@ public class DonanteController {
         serviceDonante.deleteDonante(id);
         return "redirect:/admin/donantes/verDonantes";
     }
+    //////////////////ADMIN/////////////////////////////
 
 }

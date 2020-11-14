@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Donantes - User</title>
+    <base href="/">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <!-- Fonts CSS-->
+    <link rel="stylesheet" href="css/heading.css" type="text/css">
+    <link rel="stylesheet" href="css/body.css" type="text/css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-primary fixed-top" id="mainNav">
+    <div class="container"><a class="navbar-brand js-scroll-trigger">YOU CAN HELP TOO!</a>
+        <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">SOLICITUDES</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">DONADORES</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/logout">LOG OUT</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+<section class="page-section portfolio" id="portfolio">
+    <div class="container">
+        <h2>Listado de donantes</h2>
+        <form th:action="@{/}">
+            Filtro: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+            &nbsp;
+            <input class="btn btn-info" type="submit" value="Buscar" />
+            &nbsp;
+            <input class="btn btn-info" type="button" value="Limpiar" id="btnClear" onclick="clearSearch()" />
+        </form>
+        <br>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th></th><th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="donante, dontanteStatus: ${donantes}">
+                <!--    <td data-th-text="${donante.idDonante}"></td>-->
+                <td th:text="${dontanteStatus.count}">1</td>
+                <td th:text="${donante.nombreDonante}"></td>
+                <td th:text="${donante.apellidoDonante}"></td>
+                <td th:text="${donante.edadDonante}"></td>
+                <!--<td><a th:href="@{'/admin/donantes/editDonante/' + ${donante.idDonante}}" th:text="'Editar'" class="btn btn-outline-success"></a></td>
+                <td><a th:href="@{'/admin/donantes/deleteDonante/' + ${donante.idDonante}}" th:text="'Eliminar'" class="btn btn-outline-danger"></a></td>-->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+<script type="text/javascript">
+    function clearSearch() {
+        window.location = "[[@{/}]]";
+    }
+</script>
+</body>
+</html>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Donantes - User</title>
+    <link  rel="icon"   href="images/heart_icon1.png" type="image/png" />
     <base href="/">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     <!-- Core theme CSS (includes Bootstrap)-->
@@ -30,6 +31,31 @@
 <br>
 <section class="page-section portfolio" id="portfolio">
     <div class="container">
+        <h2>Listado de Beneficiarios</h2>
+        <br>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Fundacion</th>
+                <th>Año de Inicio</th>
+                <th>Descripcion</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="beneficiario, beneficiarioStatus: ${beneficiarios}">
+                <!--    <td data-th-text="${donante.idDonante}"></td>-->
+                <td th:text="${beneficiarioStatus.count}">1</td>
+                <td th:text="${beneficiario.nombreBeneficiario}"></td>
+                <td th:text="${beneficiario.edadBeneficiario}"></td>
+                <td th:text="${beneficiario.descripcionBeneficiario}"></td>
+               </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+<section class="page-section portfolio" id="about">
+    <div class="container">
         <h2>Listado de donantes</h2>
         <form th:action="@{/}">
             Filtro: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
@@ -46,7 +72,6 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Edad</th>
-                <th></th><th></th>
             </tr>
             </thead>
             <tbody>

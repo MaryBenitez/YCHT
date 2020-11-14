@@ -1,5 +1,6 @@
 package com.pp.ycht.controller;
 
+import com.pp.ycht.domain.Beneficiario;
 import com.pp.ycht.domain.Donante;
 import com.pp.ycht.domain.Usuario;
 import com.pp.ycht.reposity.IDonanteRepo;
@@ -23,7 +24,8 @@ public class MainController {
     private IDonanteRepo repo;
     @Autowired
     private DonanteService serviceDonante;
-
+    @Autowired
+    private BeneficiarioService serviceBeneficiario;
     @Autowired
     private UsuarioService serviceUsuario;
 
@@ -32,8 +34,10 @@ public class MainController {
     public String index(ModelMap modelMap, @Param("keyword") String keyword) {
 
         List<Donante> donantes = serviceDonante.listAll(keyword);
+        List<Beneficiario> beneficiarios = serviceBeneficiario.listAll();
         List<Usuario> usuarios = serviceUsuario.listAll();
         modelMap.addAttribute("donantes", donantes);
+        modelMap.addAttribute("beneficiarios", beneficiarios);
         modelMap.addAttribute("usuarios", usuarios);
 
         modelMap.addAttribute("keyword", keyword);

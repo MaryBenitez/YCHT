@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Inicio de Sesion</title>
-
+    <link  rel="icon"   href="images/heart_icon1.png" type="image/png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -39,6 +39,9 @@
                 <div class="w-full text-center">
                     <button type="button" class="btn btn-outline-primary col-sm-5" data-toggle="modal"
                             data-target="#ModalRegistro">Registrar</button>
+                    </div>
+                <div class="w-full text-center" style="margin-top: 10px;">
+                   <a type="button" class="btn btn-outline-primary col-sm-5" th:href="@{/index}"><i class="fa fa-arrow-circle-left"></i> Volver a pagina principal </a>
                 </div>
             </form>
             <div class="login100-more" style="background-image: url('images/login_registro/loginImage.jpg');"></div>
@@ -66,5 +69,6 @@
         </div>
     </div>
 </div>
+
 </body>
 </html>

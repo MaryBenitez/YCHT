@@ -35,10 +35,7 @@ public class DonanteController {
     @RequestMapping("/admin/donantes/verDonantes")
     public String verDonantes(ModelMap modelMap, @Param("keyword") String keyword) {
         List<Donante> donantes = serviceDonante.listAll(keyword);
-        List<Usuario> usuarios = serviceUsuario.listAll();
         modelMap.addAttribute("donantes", donantes);
-        modelMap.addAttribute("usuarios", usuarios);
-
         modelMap.addAttribute("keyword", keyword);
 
         return "admin/donantes/mantenimientoVerDonantes";

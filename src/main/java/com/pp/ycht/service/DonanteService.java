@@ -24,8 +24,7 @@ public class DonanteService {
 
     public List<Donante> listAll(String keyword) {
         if (keyword != null) {
-            donanteRepository.search(keyword);
-            usuarioRepository.search(keyword);
+            return donanteRepository.search(keyword);
         }
         return donanteRepository.findAll();
     }

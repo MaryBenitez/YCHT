@@ -13,12 +13,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
 import java.util.List;
 
 @Controller
-public class MainController {
+public class MainController{
 
     @Autowired
     private IDonanteRepo repo;
@@ -53,6 +54,22 @@ public class MainController {
     @RequestMapping("/index")
     public String donantes1() {
         return "index";
+    }
+    //Error
+    @GetMapping("/access-denied")
+    public ModelAndView accessDenied(Principal usuario){
+        ModelAndView mav = new ModelAndView();
+        if (usuario != null) {
+            mav.addObject("msg", "Hola " + usuario.getName()
+                    + ", la página no existe o fue eliminada");
+        } else {
+            mav.addObject("msg",
+                    "Página no encontrada");
+        }
+
+        mav.setViewName("403");
+        return mav;
+
     }
 
 }

@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface IDonanteRepo extends JpaRepository<Donante,Integer> {
 
-  @Query("select d from Donante d where concat(d.nombreDonante, ' ', d.apellidoDonante, ' ') like %?1%")
+  @Query("select d from Donante d where concat(d.nombreDonante, ' ', d.apellidoDonante, ' ', d.edadDonante) like %?1%")
   List<Donante> search(String keyword);
 
   @Modifying

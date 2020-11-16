@@ -39,7 +39,8 @@ public class UsuarioService {
         usuario.setTipousuario("Donante");
         //Setea el rol user
         Rol rol = rolReposity.findByRol("USER");
-        usuario.setRoles(new HashSet<Rol>(Arrays.asList(rol)));
+        Rol rol2 = rolReposity.findByRol("DONANTE");
+        usuario.setRoles(new HashSet<Rol>(Arrays.asList(rol,rol2)));
         //Guarda usuario
         usuarioRepository.save(usuario);
     }
@@ -53,7 +54,8 @@ public class UsuarioService {
         usuario.setEstado(true);
         //Setea el rol user
         Rol rol = rolReposity.findByRol("USER");
-        usuario.setRoles(new HashSet<Rol>(Arrays.asList(rol)));
+        Rol rol2 = rolReposity.findByRol("BENEFICIARIO");
+        usuario.setRoles(new HashSet<Rol>(Arrays.asList(rol,rol2)));
         //Guarda usuario
         usuarioRepository.save(usuario);
     }

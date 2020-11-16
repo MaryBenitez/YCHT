@@ -30,9 +30,9 @@ public class MainController{
     @Autowired
     private UsuarioService serviceUsuario;
 
-    //Principal index
+    //Vista loggeado como Donante
     @RequestMapping("/")
-    public String index(ModelMap modelMap, @Param("keyword") String keyword) {
+    public String indexD(ModelMap modelMap, @Param("keyword") String keyword) {
 
         List<Donante> donantes = serviceDonante.listAll(keyword);
         List<Beneficiario> beneficiarios = serviceBeneficiario.listAll();
@@ -43,6 +43,21 @@ public class MainController{
 
         modelMap.addAttribute("keyword", keyword);
         return "indexDonantes";
+    }
+
+    //Vista loggeado como Beneficiario
+    @RequestMapping("/index/beneficiario")
+    public String indexB(ModelMap modelMap, @Param("keyword") String keyword) {
+
+        List<Donante> donantes = serviceDonante.listAll(keyword);
+        List<Beneficiario> beneficiarios = serviceBeneficiario.listAll();
+        List<Usuario> usuarios = serviceUsuario.listAll();
+        modelMap.addAttribute("donantes", donantes);
+        modelMap.addAttribute("beneficiarios", beneficiarios);
+        modelMap.addAttribute("usuarios", usuarios);
+
+        modelMap.addAttribute("keyword", keyword);
+        return "indexBeneficiario";
     }
 
     //Login de Usuarios

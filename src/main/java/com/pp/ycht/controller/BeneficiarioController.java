@@ -79,7 +79,7 @@ public class BeneficiarioController {
     }
 
     //Crear Usuario VISTA
-    @RequestMapping("/beneficiario/newUserBeneficiario")
+    @RequestMapping("/beneficiarios/newUserBeneficiario")
     public String newUserBeneficiario(Model model) {
         Usuario usuario = new Usuario();
         model.addAttribute("usuario", usuario);

@@ -42,14 +42,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
                 //.antMatchers("/").permitAll()
-                .antMatchers("/index").permitAll()  
+                .antMatchers("/index").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/donantes/newDonante").permitAll()
                 .antMatchers("/beneficiarios/newBeneficiario").permitAll()
                 .antMatchers("/donantes/newUserDonante").permitAll()
-                .antMatchers("/beneficiario/newUserBeneficiario").permitAll()
+                .antMatchers("/beneficiarios/newUserBeneficiario").permitAll()
                 .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
-                .antMatchers("/").hasAnyAuthority("DONANTE")
+                .antMatchers("/donante/**").hasAnyAuthority("DONANTE")
+                .antMatchers("/beneficiario/**").hasAnyAuthority("BENEFICIARIO")
                 .anyRequest().anonymous()
                 .and()
 

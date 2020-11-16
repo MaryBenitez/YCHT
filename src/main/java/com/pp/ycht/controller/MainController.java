@@ -67,7 +67,7 @@ public class MainController{
                     "Página no encontrada");
         }
 
-        mav.setViewName("403");
+        mav.setViewName("error/403");
         return mav;
 
     }

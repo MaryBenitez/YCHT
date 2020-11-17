@@ -22,7 +22,7 @@
                   method="post">
                 <span class="login100-form-title p-b-34">Registrarse como<br>nuevo Beneficiario</span>
                 <div class="wrap-input100 validate-input">
-                    <input class="input100" type="text" th:field="*{nombreBeneficiario}" placeholder="Nombre de la fundacion">
+                    <input class="input100" type="text" th:field="*{nombreBeneficiario}" placeholder="Nombre de la fundacion" required>
                     <span class="focus-input100"></span>
                 </div>
                 <div class="container">
@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="wrap-input100 validate-input">
-                    <input class="input100" type="text" th:field="*{descripcionBeneficiario}" placeholder="Descripcion">
+                    <input class="input100" type="text" th:field="*{descripcionBeneficiario}" placeholder="Descripcion" required>
                     <span class="focus-input100"></span>
                 </div>
                 <div class="container">
@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="wrap-input100 validate-input">
-                    <input class="input100" type="text" th:field="*{edadBeneficiario}" placeholder="Año de fundacion">
+                    <input class="input100" type="text" th:field="*{edadBeneficiario}" placeholder="Año de fundacion" required>
                     <span class="focus-input100"></span>
                 </div>
                 <div class="container">

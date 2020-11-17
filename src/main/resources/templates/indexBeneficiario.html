@@ -7,10 +7,48 @@
     <base href="/">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <!-- Fonts CSS-->
     <link rel="stylesheet" href="css/heading.css" type="text/css">
     <link rel="stylesheet" href="css/body.css" type="text/css">
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+            font-family: arial;
+        }
+
+        .title {
+            color: grey;
+            font-size: 18px;
+        }
+
+        button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 22px;
+            color: black;
+        }
+
+        button:hover, a:hover {
+            opacity: 0.7;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-primary fixed-top" id="mainNav">
@@ -57,14 +95,14 @@
 <section class="page-section portfolio" id="about">
     <div class="container">
         <h2>Listado de donantes</h2>
-        <form th:action="@{/}">
+        <form th:action="@{/beneficiario}">
             Filtro: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
             &nbsp;
             <input class="btn btn-info" type="submit" value="Buscar" />
             &nbsp;
             <input class="btn btn-info" type="button" value="Limpiar" id="btnClear" onclick="clearSearch()" />
         </form>
-        <br>
+        <br><!--
         <table class="table">
             <thead>
             <tr>
@@ -77,29 +115,27 @@
             </thead>
             <tbody>
             <tr th:each="donante, dontanteStatus: ${donantes}">
-                <!--    <td data-th-text="${donante.idDonante}"></td>-->
                 <td th:text="${dontanteStatus.count}">1</td>
                 <td th:text="${donante.nombreDonante}"></td>
                 <td th:text="${donante.apellidoDonante}"></td>
                 <td th:text="${donante.edadDonante}"></td>
                 <td><a th:href="@{/beneficiario/perfilD}" th:text="'Ver perfil'" class="btn btn-outline-success"></a></td>
-                <!--<td><a th:href="@{'/admin/donantes/editDonante/' + ${donante.idDonante}}" th:text="'Editar'" class="btn btn-outline-success"></a></td>
-                <td><a th:href="@{'/admin/donantes/deleteDonante/' + ${donante.idDonante}}" th:text="'Eliminar'" class="btn btn-outline-danger"></a></td>-->
-            </tr>
+                </tr>
             </tbody>
-        </table>
+        </table>-->
     </div>
     <div class="container">
-        <div class="card-deck">
+        <div class="card-columns">
             <div class="card" th:each="donante, dontanteStatus: ${donantes}">
                 <img class="img-fluid" src="images/mantenimiento/donantes.png" alt="Vivienda"/>
-                <h1 th:text="${donante.nombreDonante}"></h1>
+                <h1 th:text="${donante.nombreDonante}+' '+${donante.apellidoDonante}"></h1>
                 <p class="title">CEO & Founder, Example</p>
                 <p>Harvard University</p>
-                <a href="#"><i class="fa fa-dribbble"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-                <a href="#"><i class="fa fa-facebook"></i></a>
+                <div class="card-body">
+                    <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                    <a href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
+                    <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+                </div>
                 <p><button>Contact</button></p>
             </div>
         </div>
@@ -107,7 +143,7 @@
 </section>
 <script type="text/javascript">
     function clearSearch() {
-        window.location = "[[@{/}]]";
+        window.location = "[[@{/beneficiario}]]";
     }
 </script>
 </body>

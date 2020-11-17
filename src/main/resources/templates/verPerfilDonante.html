@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>YCHT - Bienvenido, beneficiario</title>
+    <link  rel="icon"   href="images/heart_icon1.png" type="image/png" />
+    <base href="/">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <!-- Fonts CSS-->
+    <link rel="stylesheet" href="css/heading.css" type="text/css">
+    <link rel="stylesheet" href="css/body.css" type="text/css">
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+            font-family: arial;
+        }
+
+        .title {
+            color: grey;
+            font-size: 18px;
+        }
+
+        button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 22px;
+            color: black;
+        }
+
+        button:hover, a:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-primary fixed-top" id="mainNav">
+    <div class="container"><a class="navbar-brand js-scroll-trigger">YOU CAN HELP TOO!</a>
+        <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">SOLICITUDES</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">DONADORES</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/logout">LOG OUT</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+
+<section class="page-section portfolio">
+    <div class="container">
+        <div class="card">
+            <img class="img-fluid" src="images/mantenimiento/donantes.png" alt="Vivienda"/>
+            <h1>John Doe</h1>
+            <p class="title">CEO & Founder, Example</p>
+            <p>Harvard University</p>
+            <a href="#"><i class="fa fa-dribbble"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <p><button>Contact</button></p>
+        </div>
+    </div>
+</section>
+</body>
+</html>

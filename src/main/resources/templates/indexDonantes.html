@@ -37,9 +37,10 @@
             <thead>
             <tr>
                 <th>No</th>
-                <th>Fundacion</th>
+                <th>Nombre</th>
                 <th>Año de Inicio</th>
-                <th>Descripcion</th>
+                <th>Descripción</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -49,9 +50,25 @@
                 <td th:text="${beneficiario.nombreBeneficiario}"></td>
                 <td th:text="${beneficiario.edadBeneficiario}"></td>
                 <td th:text="${beneficiario.descripcionBeneficiario}"></td>
-               </tr>
+                <td><a th:text="'Ver perfil'" class="btn btn-outline-success"></a></td>
+            </tr>
             </tbody>
         </table>
+    </div>
+    <div class="container">
+        <div class="card-deck">
+            <div class="card" th:each="beneficiario, beneficiarioStatus: ${beneficiarios}">
+                <img class="img-fluid" src="images/mantenimiento/donantes.png" alt="Vivienda"/>
+                <h1 th:text="${beneficiario.nombreBeneficiario}"></h1>
+                <p class="title">CEO & Founder, Example</p>
+                <p>Harvard University</p>
+                <a href="#"><i class="fa fa-dribbble"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <p><button>Contact</button></p>
+            </div>
+        </div>
     </div>
 </section>
 <!--

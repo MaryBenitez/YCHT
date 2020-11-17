@@ -72,6 +72,7 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Edad</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -81,11 +82,27 @@
                 <td th:text="${donante.nombreDonante}"></td>
                 <td th:text="${donante.apellidoDonante}"></td>
                 <td th:text="${donante.edadDonante}"></td>
+                <td><a th:href="@{/beneficiario/perfilD}" th:text="'Ver perfil'" class="btn btn-outline-success"></a></td>
                 <!--<td><a th:href="@{'/admin/donantes/editDonante/' + ${donante.idDonante}}" th:text="'Editar'" class="btn btn-outline-success"></a></td>
                 <td><a th:href="@{'/admin/donantes/deleteDonante/' + ${donante.idDonante}}" th:text="'Eliminar'" class="btn btn-outline-danger"></a></td>-->
             </tr>
             </tbody>
         </table>
+    </div>
+    <div class="container">
+        <div class="card-deck">
+            <div class="card" th:each="donante, dontanteStatus: ${donantes}">
+                <img class="img-fluid" src="images/mantenimiento/donantes.png" alt="Vivienda"/>
+                <h1 th:text="${donante.nombreDonante}"></h1>
+                <p class="title">CEO & Founder, Example</p>
+                <p>Harvard University</p>
+                <a href="#"><i class="fa fa-dribbble"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <p><button>Contact</button></p>
+            </div>
+        </div>
     </div>
 </section>
 <script type="text/javascript">

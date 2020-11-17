@@ -9,12 +9,14 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -74,6 +76,7 @@ public class DonanteController {
         return "redirect:/donantes/newUserDonante";
     }
 
+
     //Actualizar Donante
     @RequestMapping(value = "/admin/donantes/updateDonante", method = RequestMethod.POST)
     public String updateDonante(@ModelAttribute("donante") Donante donante) {
@@ -83,10 +86,25 @@ public class DonanteController {
 
     //Guardar Usuario
     @RequestMapping(value = "/donantes/saveUsuarioD", method = RequestMethod.POST)
-    public String saveUser(@ModelAttribute("usuario") Usuario usuario) {
-        serviceUsuario.saveUserDonante(usuario);
-        return "redirect:/login";
+    public ModelAndView saveUser(@Valid Usuario usuario, BindingResult bindingResult, ModelMap modelMap){
+        ModelAndView mav = new ModelAndView();
+        if(bindingResult.hasErrors()){
+            System.out.println(bindingResult.getAllErrors().toString());
+            mav.addObject("errorMessage","Por favor corrija los errores");
+            modelMap.addAttribute("bidingResult",bindingResult);
+            mav.setViewName("redirect:/donantes/newUserDonante");
+        }else if(serviceUsuario.ifUserExist(usuario)){
+            mav.addObject("verifyMessage","El usuario ya existe");
+            mav.setViewName("redirect:/donantes/newUserDonante");
+        }else{
+            serviceUsuario.saveUserDonante(usuario);
+            mav.addObject("successMessage","Usuario Registrado");
+            mav.addObject("usuario", new Usuario());
+            mav.setViewName("redirect:/login");
+        }
+        return mav;
     }
+
 
     //Editar datos Donante VISTA
     @RequestMapping("/admin/donantes/editDonante/{id}")

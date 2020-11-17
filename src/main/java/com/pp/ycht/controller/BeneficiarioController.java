@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -97,9 +99,23 @@ public class BeneficiarioController {
 
     //Guardar Usuario
     @RequestMapping(value = "/beneficiarios/saveUsuarioB", method = RequestMethod.POST)
-    public String saveUserBeneficiario(@ModelAttribute("usuario") Usuario usuario) {
-        serviceUsuario.saveUserBeneficiario(usuario);
-        return "redirect:/login";
+    public ModelAndView saveUser(@Valid Usuario usuario, BindingResult bindingResult, ModelMap modelMap){
+        ModelAndView mav = new ModelAndView();
+        if(bindingResult.hasErrors()){
+            System.out.println(bindingResult.getAllErrors().toString());
+            mav.addObject("errorMessage","Por favor corrija los errores");
+            modelMap.addAttribute("bidingResult",bindingResult);
+            mav.setViewName("redirect:/beneficiarios/newUserBeneficiario");
+        }else if(serviceUsuario.ifUserExist(usuario)){
+            mav.addObject("verifyMessage","El usuario ya existe");
+            mav.setViewName("redirect:/beneficiarios/newUserBeneficiario");
+        }else{
+            serviceUsuario.saveUserBeneficiario(usuario);
+            mav.addObject("successMessage","Usuario Registrado");
+            mav.addObject("usuario", new Usuario());
+            mav.setViewName("redirect:/login");
+        }
+        return mav;
     }
 
     //Actualizar Beneficiario

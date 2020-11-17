@@ -78,4 +78,13 @@ public class UsuarioService {
         return usuarioRepository.findById(id).get();
     }
 
+    public Boolean ifUserExist(Usuario usuario) {
+        boolean user = false;
+        Usuario existingUser = usuarioRepository.findByUsername(usuario.getUsername());
+        //Si el usuario se encuentra en la base de datos, entonces el usuario ya existe
+        if(existingUser != null){
+            user = true;
+        }
+        return user;
+    }
 }

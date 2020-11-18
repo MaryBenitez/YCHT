@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -50,10 +51,12 @@ public class DonanteController {
     }
 
     @RequestMapping("/donante/perfil")
-    public String verPerfilDonante() {
-        return "verMiPerfil";
+    public ModelAndView verPerfilDonante(Principal usuario) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("msg", usuario.getName());
+        mav.setViewName("/verMiPerfil");
+        return mav;
     }
-    /////////////////PRINCIPAL
 
     //////////////////ADMIN/////////////////////////////
     @RequestMapping("/admin/donantes")

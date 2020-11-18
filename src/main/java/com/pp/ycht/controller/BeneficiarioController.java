@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -49,8 +50,11 @@ public class BeneficiarioController {
         return "indexBeneficiario";
     }
     @RequestMapping("/beneficiario/perfil")
-    public String verPerfilBeneficiario() {
-        return "verMiPerfil";
+    public ModelAndView verPerfilBeneficiario(Principal usuario) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("msg", usuario.getName());
+        mav.setViewName("/verMiPerfil");
+        return mav;
     }
 
     //////////////////PRINCIPAL////////////////////

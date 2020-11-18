@@ -80,8 +80,8 @@ public class MainController{
     public ModelAndView accessDenied(Principal usuario){
         ModelAndView mav = new ModelAndView();
         if (usuario != null) {
-            mav.addObject("msg", "Hola " + usuario.getName()
-                    + ", la página no existe o fue eliminada");
+            mav.addObject("msg", "Hola, " + usuario.getName()
+                    + ". Lo sentimos.");
         } else {
             mav.addObject("msg",
                     "Página no encontrada");

@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Registro de Donantes</title>
+    <link  rel="icon"   href="images/heart_icon1.png" type="image/png" />
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -24,7 +25,7 @@
 
                 <span class="login100-form-title p-b-34">Regístrate como Beneficiario</span>
                 <div class="wrap-input100 validate-input">
-                    <input class="input100" type="text" id="username" name="username" th:field="*{username}" placeholder="Username">
+                    <input class="input100" type="text" id="username" name="username" th:field="*{username}" placeholder="Username" required>
                     <span class="focus-input100"></span>
                 </div>
                 <div class="container">
@@ -35,7 +36,7 @@
                     </div>
                 </div>
                 <div class="wrap-input100 validate-input">
-                    <input class="input100" type="password" id="pass" name="pass" th:field="*{pass}" placeholder="Contraseña">
+                    <input class="input100" type="password" id="pass" name="pass" th:field="*{pass}" placeholder="Contraseña" required>
                     <span class="focus-input100"></span>
                 </div>
                 <div class="container">

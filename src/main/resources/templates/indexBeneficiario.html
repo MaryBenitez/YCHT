@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>YCHT - Bienvenido, donante</title>
+    <title>YCHT - Bienvenido, beneficiario</title>
     <link  rel="icon"   href="images/heart_icon1.png" type="image/png" />
     <base href="/">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
@@ -10,8 +10,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
     <!-- Fonts CSS-->
     <link rel="stylesheet" href="css/heading.css" type="text/css">
     <link rel="stylesheet" href="css/body.css" type="text/css">
@@ -59,11 +59,9 @@
         <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/donante">BENEFICIARIOS</a>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/beneficiario">DONANTES</a>
                 </li>
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#">CAUSAS</a>
-                </li>
-                <li class="nav-item mx-0 mx-lg-1 "><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/donante/perfil">MI PERFIL</a>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/beneficiario/perfil">MI PERFIL</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/logout">LOG OUT</a>
                 </li>
@@ -72,18 +70,18 @@
     </div>
 </nav>
 <br>
+<!--
 <section class="page-section portfolio" id="portfolio">
     <div class="container">
         <h2>Listado de Beneficiarios</h2>
-        <br><!--
+        <br>
         <table class="table">
             <thead>
             <tr>
                 <th>No</th>
-                <th>Nombre</th>
+                <th>Fundacion</th>
                 <th>Año de Inicio</th>
-                <th>Descripción</th>
-                <th></th>
+                <th>Descripcion</th>
             </tr>
             </thead>
             <tbody>
@@ -92,18 +90,49 @@
                 <td th:text="${beneficiario.nombreBeneficiario}"></td>
                 <td th:text="${beneficiario.edadBeneficiario}"></td>
                 <td th:text="${beneficiario.descripcionBeneficiario}"></td>
-                <td><a th:text="'Ver perfil'" class="btn btn-outline-success"></a></td>
+               </tr>
+            </tbody>
+        </table>
+    </div>
+</section>-->
+<section class="page-section portfolio" id="about">
+    <div class="container">
+        <h2>Listado de donantes</h2>
+        <form th:action="@{/beneficiario}">
+            Filtro: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+            &nbsp;
+            <input class="btn btn-info" type="submit" value="Buscar" />
+            &nbsp;
+            <input class="btn btn-info" type="button" value="Limpiar" id="btnClear" onclick="clearSearch()" />
+        </form>
+        <br><!--
+        <table class="table">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th></th>
             </tr>
+            </thead>
+            <tbody>
+            <tr th:each="donante, dontanteStatus: ${donantes}">
+                <td th:text="${dontanteStatus.count}">1</td>
+                <td th:text="${donante.nombreDonante}"></td>
+                <td th:text="${donante.apellidoDonante}"></td>
+                <td th:text="${donante.edadDonante}"></td>
+                <td><a th:href="@{/beneficiario/perfilD}" th:text="'Ver perfil'" class="btn btn-outline-success"></a></td>
+                </tr>
             </tbody>
         </table>-->
     </div>
     <div class="container">
         <div class="card-columns">
-            <div class="card" th:each="beneficiario, beneficiarioStatus: ${beneficiarios}">
+            <div class="card" th:each="donante, dontanteStatus: ${donantes}">
                 <div class="card-body">
-                    <img class="img-fluid" src="images/mantenimiento/beneficiarios.png" alt="Vivienda"/>
-                    <h3 th:text="${beneficiario.nombreBeneficiario}"></h3>
-                    <!--<p class="title" th:text="${beneficiario.descripcionBeneficiario}"></p>-->
+                    <img class="img-fluid" src="images/mantenimiento/donantes.png" alt="Vivienda"/>
+                    <h3 th:text="${donante.nombreDonante}+' '+${donante.apellidoDonante}"></h3>
                     <p><i class="fas fa-phone-alt"></i> 2257 7777</p>
                     <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
                     <a href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
@@ -113,7 +142,7 @@
                     Ver perfil
                 </button>
                 <!-- The Modal -->
-                <div class="modal fade" id="myModal" style="text-align: justify;">
+                <div class="modal fade" id="myModal">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
 
@@ -139,7 +168,7 @@
                                         <div class="tab-content py-4">
                                             <div class="tab-pane active" id="profile">
                                                 <h5 class="mb-3">User Profile</h5>
-                                                <h2 th:text="${beneficiario.nombreBeneficiario}"></h2>
+                                                <h2 th:text="${donante.nombreDonante}"></h2>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <h6>About</h6>
@@ -297,7 +326,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4 order-lg-1 text-center">
-                                        <img src="images/mantenimiento/beneficiarios.png" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+                                        <img src="images/mantenimiento/donantes.png" class="mx-auto img-fluid img-circle d-block" alt="avatar">
                                         <h6 class="mt-2">Upload a different photo</h6>
                                         <label class="custom-file">
                                             <input type="file" id="file" class="custom-file-input">
@@ -311,7 +340,6 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -319,41 +347,9 @@
         </div>
     </div>
 </section>
-<!--
-<section class="page-section portfolio" id="about">
-    <div class="container">
-        <h2>Listado de donantes</h2>
-        <form th:action="@{/}">
-            Filtro: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
-            &nbsp;
-            <input class="btn btn-info" type="submit" value="Buscar" />
-            &nbsp;
-            <input class="btn btn-info" type="button" value="Limpiar" id="btnClear" onclick="clearSearch()" />
-        </form>
-        <br>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>No</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Edad</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="donante, dontanteStatus: ${donantes}">
-                <td th:text="${dontanteStatus.count}">1</td>
-                <td th:text="${donante.nombreDonante}"></td>
-                <td th:text="${donante.apellidoDonante}"></td>
-                <td th:text="${donante.edadDonante}"></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</section>-->
 <script type="text/javascript">
     function clearSearch() {
-        window.location = "[[@{/}]]";
+        window.location = "[[@{/beneficiario}]]";
     }
 </script>
 </body>

@@ -1,7 +1,10 @@
 package com.pp.ycht.controller;
 
+import com.pp.ycht.domain.Beneficiario;
 import com.pp.ycht.domain.Donante;
 import com.pp.ycht.domain.Usuario;
+import com.pp.ycht.reposity.IUsuarioRepository;
+import com.pp.ycht.service.BeneficiarioService;
 import com.pp.ycht.service.DonanteService;
 import com.pp.ycht.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +12,15 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -24,14 +30,40 @@ public class DonanteController {
     private DonanteService serviceDonante;
 
     @Autowired
+    private BeneficiarioService serviceBeneficiario;
+
+    @Autowired
+    private IUsuarioRepository usuarioRepository;
+
+    @Autowired
     private UsuarioService serviceUsuario;
 
     //////////////////PRINCIPAL//////////////////////////
-    /*@RequestMapping("/donantes")
-    public String donantes1() {
-        return "indexDonantes";
-    }*/
+    //Vista loggeado como Donante
+    @RequestMapping("/donante")
+    public String indexD(ModelMap modelMap, @Param("keyword") String keyword) {
 
+        List<Donante> donantes = serviceDonante.listAll(keyword);
+        List<Beneficiario> beneficiarios = serviceBeneficiario.listAll();
+        List<Usuario> usuarios = serviceUsuario.listAll();
+        modelMap.addAttribute("donantes", donantes);
+        modelMap.addAttribute("beneficiarios", beneficiarios);
+        modelMap.addAttribute("usuarios", usuarios);
+
+        modelMap.addAttribute("keyword", keyword);
+        return "indexDonantes";
+    }
+
+    @RequestMapping("/donante/perfil")
+    public ModelAndView verPerfilDonante(Principal usuario) {
+        ModelAndView mav = new ModelAndView();
+        //usuarioRepository.findByUsername(usuario.getName());
+        //mav.addObject("msg", usuarioRepository.findByUsername(usuario.getName()).getIdusuario());
+        //mav.addObject("msg",serviceDonante.findByIdUserAndIdDonante(usuarioRepository.findByUsername(usuario.getName()).getIdusuario()));
+        mav.addObject("msg",usuario.getName());
+        mav.setViewName("verMiPerfilD");
+        return mav;
+    }
 
     //////////////////ADMIN/////////////////////////////
     @RequestMapping("/admin/donantes")
@@ -43,10 +75,7 @@ public class DonanteController {
     @RequestMapping("/admin/donantes/verDonantes")
     public String verDonantes(ModelMap modelMap, @Param("keyword") String keyword) {
         List<Donante> donantes = serviceDonante.listAll(keyword);
-        List<Usuario> usuarios = serviceUsuario.listAll();
         modelMap.addAttribute("donantes", donantes);
-        modelMap.addAttribute("usuarios", usuarios);
-
         modelMap.addAttribute("keyword", keyword);
 
         return "admin/donantes/mantenimientoVerDonantes";
@@ -77,6 +106,7 @@ public class DonanteController {
         return "redirect:/donantes/newUserDonante";
     }
 
+
     //Actualizar Donante
     @RequestMapping(value = "/admin/donantes/updateDonante", method = RequestMethod.POST)
     public String updateDonante(@ModelAttribute("donante") Donante donante) {
@@ -86,10 +116,25 @@ public class DonanteController {
 
     //Guardar Usuario
     @RequestMapping(value = "/donantes/saveUsuarioD", method = RequestMethod.POST)
-    public String saveUser(@ModelAttribute("usuario") Usuario usuario) {
-        serviceUsuario.saveUserDonante(usuario);
-        return "redirect:/login";
+    public ModelAndView saveUser(@Valid Usuario usuario, BindingResult bindingResult, ModelMap modelMap){
+        ModelAndView mav = new ModelAndView();
+        if(bindingResult.hasErrors()){
+            System.out.println(bindingResult.getAllErrors().toString());
+            mav.addObject("errorMessage","Por favor corrija los errores");
+            modelMap.addAttribute("bidingResult",bindingResult);
+            mav.setViewName("redirect:/donantes/newUserDonante");
+        }else if(serviceUsuario.ifUserExist(usuario)){
+            mav.addObject("verifyMessage","El usuario ya existe");
+            mav.setViewName("redirect:/donantes/newUserDonante");
+        }else{
+            serviceUsuario.saveUserDonante(usuario);
+            mav.addObject("successMessage","Usuario Registrado");
+            mav.addObject("usuario", new Usuario());
+            mav.setViewName("redirect:/login");
+        }
+        return mav;
     }
+
 
     //Editar datos Donante VISTA
     @RequestMapping("/admin/donantes/editDonante/{id}")

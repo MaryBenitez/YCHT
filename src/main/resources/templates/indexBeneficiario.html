@@ -131,7 +131,7 @@
         <div class="card-columns">
             <div class="card" th:each="donante, dontanteStatus: ${donantes}">
                 <div class="card-body">
-                    <img class="img-fluid" src="images/mantenimiento/donantes.png" alt="Vivienda"/>
+                    <img class="img-fluid" src="images/mantenimiento/donantes.png" alt="Vivienda" style="border-radius: 10px;"/>
                     <h3 th:text="${donante.nombreDonante}+' '+${donante.apellidoDonante}"></h3>
                     <p><i class="fas fa-phone-alt"></i> 2257 7777</p>
                     <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
@@ -142,7 +142,7 @@
                     Ver perfil
                 </button>
                 <!-- The Modal -->
-                <div class="modal fade" id="myModal">
+                <div class="modal fade" id="myModal" style="text-align: justify;">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
 
@@ -326,7 +326,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4 order-lg-1 text-center">
-                                        <img src="images/mantenimiento/donantes.png" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+                                        <img src="images/mantenimiento/donantes.png" class="mx-auto img-fluid img-circle d-block" alt="avatar" style="border-radius: 10px;">
                                         <h6 class="mt-2">Upload a different photo</h6>
                                         <label class="custom-file">
                                             <input type="file" id="file" class="custom-file-input">

@@ -53,7 +53,7 @@ public class BeneficiarioController {
     public ModelAndView verPerfilBeneficiario(Principal usuario) {
         ModelAndView mav = new ModelAndView();
         mav.addObject("msg", usuario.getName());
-        mav.setViewName("/verMiPerfil");
+        mav.setViewName("verMiPerfilB");
         return mav;
     }
 

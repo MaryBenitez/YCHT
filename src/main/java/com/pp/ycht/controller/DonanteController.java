@@ -61,7 +61,7 @@ public class DonanteController {
         //mav.addObject("msg", usuarioRepository.findByUsername(usuario.getName()).getIdusuario());
         //mav.addObject("msg",serviceDonante.findByIdUserAndIdDonante(usuarioRepository.findByUsername(usuario.getName()).getIdusuario()));
         mav.addObject("msg",usuario.getName());
-        mav.setViewName("/verMiPerfil");
+        mav.setViewName("verMiPerfilD");
         return mav;
     }
 

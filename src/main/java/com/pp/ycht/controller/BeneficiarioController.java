@@ -48,9 +48,9 @@ public class BeneficiarioController {
         modelMap.addAttribute("keyword", keyword);
         return "indexBeneficiario";
     }
-    @RequestMapping("/beneficiario/perfilD")
-    public String verPerfilDonante() {
-        return "verPerfilDonante";
+    @RequestMapping("/beneficiario/perfil")
+    public String verPerfilBeneficiario() {
+        return "verMiPerfil";
     }
 
     //////////////////PRINCIPAL////////////////////

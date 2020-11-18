@@ -49,6 +49,10 @@ public class DonanteController {
         return "indexDonantes";
     }
 
+    @RequestMapping("/donante/perfil")
+    public String verPerfilDonante() {
+        return "verMiPerfil";
+    }
     /////////////////PRINCIPAL
 
     //////////////////ADMIN/////////////////////////////

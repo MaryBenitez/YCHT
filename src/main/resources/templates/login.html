@@ -1,41 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Inicio de Sesion</title>
-    <link rel="stylesheet" href="css/estilos.css">
+    <link  rel="icon"   href="images/heart_icon1.png" type="image/png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="css/loginStyle.css">
 </head>
 <body>
-    <div class="container">
-        <div class="form-box">
-            <div class="button-box">
-                <div id="elegir"></div>
-                <button type="button" class="press-button" onclick="login()">Iniciar Sesion</button>
-                <button type="button" class="press-button" onclick="registrar()">Registrar</button>
-            </div>
-            <div class="redes-sociales">
-                <img src="images/login_registro/gm.png">
-                <img src="images/login_registro/tw.png">
-                <img src="images/login_registro/fb.png">
-            </div>
-            <form id="login" class="input-groups">
-                <input type="text" class="input-field" placeholder="Usuario" required>
-                <input type="password" class="input-field" placeholder="Contraseña" required>
-                <input type="checkbox" class="check-box"><span>¿Olvidaste tu contraseña?</span>
-                <button type="submit" class="submit-btn" onclick="location.href='index.html'">Acceder</button>
-            </form>
-            <form id="register" class="input-groups">
-                <input type="text" class="input-field" placeholder="Usuario" required>
-                <input type="email" class="input-field" placeholder="Correo" required>
-                <input type="password" class="input-field" placeholder="Contraseña" required>
-                <div class="checkBox-DB">
-                    <input type="checkbox" class="check-box" id="donantecheck"><span>Donante</span>
-                    <input type="checkbox" class="check-box" id="beneficiariocheck"><span>Beneficiario</span>
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <form class="login100-form" th:action="@{/login}" method="post">
+                <br><br>
+                <span class="login100-form-title p-b-34">Iniciar Sesión</span>
+                <div class="wrap-input100 rs1-wrap-input100 m-b-20">
+                    <input id="username" class="input100" type="text" name="username" placeholder="Usuario">
+                    <span class="focus-input100"></span>
                 </div>
-                <button type="submit" class="submit-btn" id="btnR">Registrar</button>
+                <div class="wrap-input100 rs2-wrap-input100 m-b-20">
+                    <input class="input100" type="password" id="pass" name="pass" placeholder="Contraseña">
+                    <span class="focus-input100"></span>
+                </div>
+                <div class="container-login100-form-btn">
+                    <button class="btn login100-form-btn btn-success">Acceder</button>
+                </div>
+                <div class="w-full text-center p-t-27 p-b-239">
+                    <span class="txt1">Olvidó</span>
+                    <a href="#" class="txt2">Usuario / Contraseña?</a>
+                </div>
+                <div class="w-full text-center">
+                    <button type="button" class="btn btn-outline-primary col-sm-5" data-toggle="modal"
+                            data-target="#ModalRegistro">Registrar</button>
+                    </div>
+                <div class="w-full text-center" style="margin-top: 10px;">
+                   <a type="button" class="btn btn-outline-primary col-sm-5" th:href="@{/index}"><i class="fa fa-arrow-circle-left"></i> Volver a pagina principal </a>
+                </div>
             </form>
+            <div class="login100-more" style="background-image: url('images/login_registro/loginImage.jpg');"></div>
         </div>
     </div>
-    <script src="js/login.js" type="text/javascript"></script>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="ModalRegistro" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">¿Cómo desea registrarse?</h5>
+            </div>
+            <div class="modal-body">
+                <p align="center"><b>YOU CAN HELP TOO</b></p>
+                <p>YOU CAN HELP TOO es una aplicación web creada con el fin de facilitar la recaudación de fondos
+                    para lugares donde exista necesidad económica, sin importar la causa. Logrando que la ayuda
+                    sea más rápida, efectiva y accesible.</p>
+            </div>
+            <div class="modal-footer">
+                <a th:href="@{/donantes/newDonante}" th:text="'Donante'" class="btn btn-info"></a>
+                <a th:href="@{/beneficiarios/newBeneficiario}" th:text="'Beneficiario'" class="btn btn-info"></a>
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

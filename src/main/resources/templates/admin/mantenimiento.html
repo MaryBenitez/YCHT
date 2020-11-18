@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
+    <link  rel="icon"   href="images/heart_icon1.png" type="image/png" />
+    <base href="/">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
     <!-- Fonts CSS-->
-    <link rel="stylesheet" href="css/heading.css">
-    <link rel="stylesheet" href="css/body.css">
+    <link rel="stylesheet" href="css/heading.css" type="text/css">
+    <link rel="stylesheet" href="css/body.css" type="text/css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
-        <div class="container"><a class="navbar-brand js-scroll-trigger" href="#page-top">YOU CAN HELP TOO! ADMIN</a>
+        <div class="container"><a class="navbar-brand js-scroll-trigger" th:href="@{admin}">YOU CAN HELP TOO! ADMIN</a>
             <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
@@ -21,7 +23,7 @@
                     </li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">DONADORES</a>
                     </li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">LOG OUT</a>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/logout">LOG OUT</a>
                     </li>
                 </ul>
             </div>
@@ -44,7 +46,7 @@
             <div class="row justify-content-center">
                 <!-- Portfolio Items-->
                 <div class="col-md-6 col-lg-4 mb-5">
-                    <a href="mantenimientoDonantes.html">
+                    <a th:href="@{/admin/donantes}">
                     <div class="portfolio-item mx-auto">
                         <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                             <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
@@ -54,7 +56,7 @@
                     </a>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-5">
-                    <a href="mantenimientoBeneficiarios.html">
+                    <a th:href="@{/admin/beneficiarios}">
                     <div class="portfolio-item mx-auto">
                         <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                             <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
@@ -64,12 +66,22 @@
                     </a>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-5">
-                    <a href="mantenimientoCausas.html">
+                    <a>
                         <div class="portfolio-item mx-auto">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
                             <img class="img-fluid" src="images/mantenimiento/causas.png" alt="Vivienda"/>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-5">
+                    <a th:href="@{/admin/newAdmin}">
+                        <div class="portfolio-item mx-auto">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="images/mantenimiento/admins.png" alt="Vivienda"/>
                         </div>
                     </a>
                 </div>

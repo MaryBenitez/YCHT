@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <link  rel="icon"   href="images/heart_icon1.png" type="image/png" />
+    <meta name="author" content="">
+    <title>Acces Denied</title>
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet">
+    <!-- Fonts CSS-->
+    <link rel="stylesheet" href="css/heading.css">
+    <link rel="stylesheet" href="css/body.css">
+</head>
+<body>
+<div style="text-align: center; padding-left: 25%; padding-right: 25%"  class="container-sm">
+    <h1>HTTP Status 403 - ¡Acceso Denegado!</h1>
+    <h2 th:text="${msg}"></h2>
+    <img class="img-fluid" src="images/triste2.png" alt="Error"/>
+</div>
+</body>
+</html>

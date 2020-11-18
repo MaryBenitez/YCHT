@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Registro de Donantes</title>
+    <link  rel="icon"   href="images/heart_icon1.png" type="image/png" />
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="css/loginStyle.css">
+</head>
+<body>
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <!--/*@thymesVar id="usuario" type=""*/-->
+            <form class="login100-form" th:action="@{/beneficiarios/saveUsuarioB}" th:object="${usuario}" method="post" >
+
+                <span class="login100-form-title p-b-34">Regístrate como Beneficiario</span>
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="text" id="username" name="username" th:field="*{username}" placeholder="Username" required>
+                    <span class="focus-input100"></span>
+                </div>
+                <div class="container">
+                    <div class="row align-items-start">
+                        <div class="col"><font color="white">.</font></div>
+                        <div class="col"><font color="white">.</font></div>
+                        <div class="col"><font color="white">.</font></div>
+                    </div>
+                </div>
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="password" id="pass" name="pass" th:field="*{pass}" placeholder="Contraseña" required>
+                    <span class="focus-input100"></span>
+                </div>
+                <div class="container">
+                    <div class="row align-items-start">
+                        <div class="col"><font color="white">.</font></div>
+                        <div class="col"><font color="white">.</font></div>
+                        <div class="col"><font color="white">.</font></div>
+                    </div>
+                </div>
+                <div class="container-login100-form-btn">
+                    <button class="btn login100-form-btn btn-success">Registrarse</button>
+                </div>
+            </form>
+            <div class="login100-more" style="background-image:url('images/login_registro/registrobeneficiario.png');"></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

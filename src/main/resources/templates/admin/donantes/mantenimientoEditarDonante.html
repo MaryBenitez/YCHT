@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Donante</title>
+    <link  rel="icon"   href="images/heart_icon1.png" type="image/png" />
+    <base href="/">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <!-- Fonts CSS-->
+    <link rel="stylesheet" href="css/heading.css" type="text/css">
+    <link rel="stylesheet" href="css/body.css" type="text/css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
+    <div class="container"><a class="navbar-brand js-scroll-trigger" th:href="@{admin}">YOU CAN HELP TOO! ADMIN</a>
+        <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">SOLICITUDES</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">DONADORES</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/logout">LOG OUT</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+<section class="page-section portfolio" id="portfolio">
+    <div align="center">
+        <br>
+        <br>
+       <h2>Editar Donante</h2>
+    <form th:action="@{/admin/donantes/updateDonante}" th:object="${donante}" method="post">
+
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>
+                    <input type="hidden" th:field="*{idDonante}" readonly="readonly" />
+                </td>
+            </tr>
+            <tr>
+                <td>Nombre:</td>
+                <td>
+                    <input type="text" th:field="*{nombreDonante}" />
+                </td>
+            </tr>
+            <tr>
+                <td>Apellido:</td>
+                <td><input type="text" th:field="*{apellidoDonante}" /></td>
+            </tr>
+            <tr>
+                <td>Edad:</td>
+                <td><input type="text" th:field="*{edadDonante}" /></td>
+            </tr>
+            <!--
+            <tr>
+                <td colspan="2"><button class="btn btn-outline-success" >Actualizar</button> </td>
+            </tr>
+            -->
+        </table>
+        <br>
+        <div class="container-login100-form-btn">
+            <button class="btn login100-form-btn btn-success">Actualizar</button>
+        </div>
+    </form>
+
+
+</div>
+</section>
+</body>
+</html>

@@ -31,7 +31,7 @@ public class MainController{
     private UsuarioService serviceUsuario;
 
     //Vista loggeado como Donante
-    @RequestMapping("/donante")
+    /*@RequestMapping("/donante")
     public String indexD(ModelMap modelMap, @Param("keyword") String keyword) {
 
         List<Donante> donantes = serviceDonante.listAll(keyword);
@@ -43,10 +43,10 @@ public class MainController{
 
         modelMap.addAttribute("keyword", keyword);
         return "indexDonantes";
-    }
+    }*/
 
     //Vista loggeado como Beneficiario
-    @RequestMapping("/beneficiario")
+    /*@RequestMapping("/beneficiario")
     public String indexB(ModelMap modelMap, @Param("keyword") String keyword) {
 
         List<Donante> donantes = serviceDonante.listAll(keyword);
@@ -62,7 +62,7 @@ public class MainController{
     @RequestMapping("/beneficiario/perfilD")
     public String verPerfilDonante() {
         return "verPerfilDonante";
-    }
+    }*/
 
 
     //Login de Usuarios

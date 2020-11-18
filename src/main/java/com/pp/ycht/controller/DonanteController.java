@@ -1,7 +1,9 @@
 package com.pp.ycht.controller;
 
+import com.pp.ycht.domain.Beneficiario;
 import com.pp.ycht.domain.Donante;
 import com.pp.ycht.domain.Usuario;
+import com.pp.ycht.service.BeneficiarioService;
 import com.pp.ycht.service.DonanteService;
 import com.pp.ycht.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,14 +28,28 @@ public class DonanteController {
     private DonanteService serviceDonante;
 
     @Autowired
+    private BeneficiarioService serviceBeneficiario;
+
+    @Autowired
     private UsuarioService serviceUsuario;
 
     //////////////////PRINCIPAL//////////////////////////
-    /*@RequestMapping("/donantes")
-    public String donantes1() {
-        return "indexDonantes";
-    }*/
+    //Vista loggeado como Donante
+    @RequestMapping("/donante")
+    public String indexD(ModelMap modelMap, @Param("keyword") String keyword) {
 
+        List<Donante> donantes = serviceDonante.listAll(keyword);
+        List<Beneficiario> beneficiarios = serviceBeneficiario.listAll();
+        List<Usuario> usuarios = serviceUsuario.listAll();
+        modelMap.addAttribute("donantes", donantes);
+        modelMap.addAttribute("beneficiarios", beneficiarios);
+        modelMap.addAttribute("usuarios", usuarios);
+
+        modelMap.addAttribute("keyword", keyword);
+        return "indexDonantes";
+    }
+
+    /////////////////PRINCIPAL
 
     //////////////////ADMIN/////////////////////////////
     @RequestMapping("/admin/donantes")

@@ -41,4 +41,6 @@ public class DonanteService {
         donanteRepository.deleteByid(id);
     }
 
+    public String findByIdUserAndIdDonante(Integer id){ return donanteRepository.findByIdUserAndIdDonante(id); }
+
 }

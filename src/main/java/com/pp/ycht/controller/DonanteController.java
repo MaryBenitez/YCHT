@@ -3,6 +3,7 @@ package com.pp.ycht.controller;
 import com.pp.ycht.domain.Beneficiario;
 import com.pp.ycht.domain.Donante;
 import com.pp.ycht.domain.Usuario;
+import com.pp.ycht.reposity.IUsuarioRepository;
 import com.pp.ycht.service.BeneficiarioService;
 import com.pp.ycht.service.DonanteService;
 import com.pp.ycht.service.UsuarioService;
@@ -32,6 +33,9 @@ public class DonanteController {
     private BeneficiarioService serviceBeneficiario;
 
     @Autowired
+    private IUsuarioRepository usuarioRepository;
+
+    @Autowired
     private UsuarioService serviceUsuario;
 
     //////////////////PRINCIPAL//////////////////////////
@@ -53,7 +57,10 @@ public class DonanteController {
     @RequestMapping("/donante/perfil")
     public ModelAndView verPerfilDonante(Principal usuario) {
         ModelAndView mav = new ModelAndView();
-        mav.addObject("msg", usuario.getName());
+        //usuarioRepository.findByUsername(usuario.getName());
+        //mav.addObject("msg", usuarioRepository.findByUsername(usuario.getName()).getIdusuario());
+        //mav.addObject("msg",serviceDonante.findByIdUserAndIdDonante(usuarioRepository.findByUsername(usuario.getName()).getIdusuario()));
+        mav.addObject("msg",usuario.getName());
         mav.setViewName("/verMiPerfil");
         return mav;
     }

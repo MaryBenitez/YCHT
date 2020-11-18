@@ -20,5 +20,9 @@ public interface IDonanteRepo extends JpaRepository<Donante,Integer> {
   @Query("delete from Donante where idDonante = ?1")
   void deleteByid(Integer id);
 
+  //@Query("select d from Usuario u inner join Donante d on (u.idusuario = d.idDonante) where d.idDonante = ?1")
+  @Query("select d.nombreDonante from Usuario u inner join Donante d on (u.idusuario = d.idDonante) where u.idusuario = ?1")
+  String findByIdUserAndIdDonante(Integer id);
+
 }
 

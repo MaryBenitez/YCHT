@@ -130,17 +130,16 @@
     <div class="container">
         <div class="card-columns">
             <div class="card" th:each="donante, dontanteStatus: ${donantes}">
-                <img class="img-fluid" src="images/mantenimiento/donantes.png" alt="Vivienda"/>
-                <h1 th:text="${donante.nombreDonante}+' '+${donante.apellidoDonante}"></h1>
-                <p class="title">CEO & Founder, Example</p>
-                <p>Harvard University</p>
                 <div class="card-body">
+                    <img class="img-fluid" src="images/mantenimiento/donantes.png" alt="Vivienda"/>
+                    <h3 th:text="${donante.nombreDonante}+' '+${donante.apellidoDonante}"></h3>
+                    <p><i class="fas fa-phone-alt"></i> 2257 7777</p>
                     <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
                     <a href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
                     <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
                 </div>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                    Open modal
+                    Ver perfil
                 </button>
                 <!-- The Modal -->
                 <div class="modal fade" id="myModal">
@@ -327,7 +326,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4 order-lg-1 text-center">
-                                        <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+                                        <img src="images/mantenimiento/donantes.png" class="mx-auto img-fluid img-circle d-block" alt="avatar">
                                         <h6 class="mt-2">Upload a different photo</h6>
                                         <label class="custom-file">
                                             <input type="file" id="file" class="custom-file-input">

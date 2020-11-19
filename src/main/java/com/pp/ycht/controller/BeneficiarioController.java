@@ -125,7 +125,7 @@ public class BeneficiarioController {
     public String saveBeneficiario(@ModelAttribute("beneficiario") Beneficiario beneficiario) {
         serviceBeneficiario.saveBeneficiario(beneficiario);
 
-        return "redirect:/beneficiario/newUserBeneficiario";
+        return "redirect:/beneficiarios/newUserBeneficiario";
     }
 
     //Guardar Usuario

@@ -100,19 +100,18 @@
     <div class="container">
         <div class="card-columns">
             <div class="card" th:each="beneficiario, beneficiarioStatus: ${beneficiarios}">
-                <img class="img-fluid" src="images/mantenimiento/beneficiarios.png" alt="Vivienda"/>
-                <h1 th:text="${beneficiario.nombreBeneficiario}"></h1>
-                <p class="title" th:text="${beneficiario.descripcionBeneficiario}"></p>
                 <div class="card-body">
+                    <img class="img-fluid" src="images/mantenimiento/beneficiarios.png" style="border-radius: 10px;" alt="Vivienda"/>
+                    <h3 th:text="${beneficiario.nombreBeneficiario}"></h3>
+                    <!--<p class="title" th:text="${beneficiario.descripcionBeneficiario}"></p>-->
+                    <p th:text="${beneficiario.telefonoBeneficiario}"><i class="fas fa-phone-alt"></i></p>
                     <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
                     <a href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
                     <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
                 </div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                    Open modal
-                </button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Ver perfil                </button>
                 <!-- The Modal -->
-                <div class="modal fade" id="myModal">
+                <div class="modal fade" id="myModal" style="text-align: justify;">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
 
@@ -131,9 +130,9 @@
                                             <li class="nav-item">
                                                 <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Messages</a>
                                             </li>
-                                            <li class="nav-item">
+                                            <!--<li class="nav-item">
                                                 <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
-                                            </li>
+                                            </li>-->
                                         </ul>
                                         <div class="tab-content py-4">
                                             <div class="tab-pane active" id="profile">
@@ -142,13 +141,14 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <h6>About</h6>
-                                                        <p>
-                                                            Web Designer, UI/UX Engineer
-                                                        </p>
-                                                        <h6>Hobbies</h6>
-                                                        <p>
-                                                            Indie music, skiing and hiking. I love the great outdoors.
-                                                        </p>
+                                                        <p th:text="${beneficiario.descripcionBeneficiario}"></p>
+                                                        <p th:text="${beneficiario.telefonoBeneficiario}"><i class="fas fa-phone-alt"></i></p>
+                                                        <p th:text="${beneficiario.correoBeneficiario}"><a class="lead font-weight-bold" href="mailto:name@example.com">contacto@YCHT.com</a></p>
+                                                        <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                                                        <a href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
+                                                        <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+                                                        <h6>Since</h6>
+                                                        <p th:text="${beneficiario.edadBeneficiario}"></p>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>
@@ -219,7 +219,7 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <div class="tab-pane" id="edit">
+                                           <!-- <div class="tab-pane" id="edit">
                                                 <form role="form">
                                                     <div class="form-group row">
                                                         <label class="col-lg-3 col-form-label form-control-label">First name</label>
@@ -292,16 +292,11 @@
                                                         </div>
                                                     </div>
                                                 </form>
-                                            </div>
+                                            </div>-->
                                         </div>
                                     </div>
                                     <div class="col-lg-4 order-lg-1 text-center">
-                                        <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-                                        <h6 class="mt-2">Upload a different photo</h6>
-                                        <label class="custom-file">
-                                            <input type="file" id="file" class="custom-file-input">
-                                            <span class="custom-file-control">Choose file</span>
-                                        </label>
+                                        <img src="images/mantenimiento/beneficiarios.png" class="mx-auto img-fluid img-circle d-block" style="border-radius: 10px;" alt="avatar">
                                     </div>
                                 </div>
                             </div>

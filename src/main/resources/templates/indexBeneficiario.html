@@ -130,20 +130,19 @@
     <div class="container">
         <div class="card-columns">
             <div class="card" th:each="donante, dontanteStatus: ${donantes}">
-                <img class="img-fluid" src="images/mantenimiento/donantes.png" alt="Vivienda"/>
-                <h1 th:text="${donante.nombreDonante}+' '+${donante.apellidoDonante}"></h1>
-                <p class="title">CEO & Founder, Example</p>
-                <p>Harvard University</p>
                 <div class="card-body">
+                    <img class="img-fluid" src="images/mantenimiento/donantes.png" alt="Vivienda" style="border-radius: 10px;"/>
+                    <h3 th:text="${donante.nombreDonante}+' '+${donante.apellidoDonante}"></h3>
+                    <p th:text="${donante.telefonoDonante}"><i class="fas fa-phone-alt"></i></p>
                     <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
                     <a href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
                     <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
                 </div>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                    Open modal
+                    Ver perfil
                 </button>
                 <!-- The Modal -->
-                <div class="modal fade" id="myModal">
+                <div class="modal fade" id="myModal" style="text-align: justify;">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
 
@@ -162,24 +161,21 @@
                                             <li class="nav-item">
                                                 <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Messages</a>
                                             </li>
-                                            <li class="nav-item">
+                                            <!--<li class="nav-item">
                                                 <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
-                                            </li>
+                                            </li>-->
                                         </ul>
                                         <div class="tab-content py-4">
                                             <div class="tab-pane active" id="profile">
                                                 <h5 class="mb-3">User Profile</h5>
-                                                <h2 th:text="${donante.nombreDonante}"></h2>
+                                                <h2 th:text="${donante.nombreDonante}+' '+${donante.apellidoDonante}"></h2>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <h6>About</h6>
-                                                        <p>
-                                                            Web Designer, UI/UX Engineer
-                                                        </p>
-                                                        <h6>Hobbies</h6>
-                                                        <p>
-                                                            Indie music, skiing and hiking. I love the great outdoors.
-                                                        </p>
+                                                        <p><i class="fas fa-phone-alt"></i> 2257 7777</p>
+                                                        <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                                                        <a href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
+                                                        <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>
@@ -327,12 +323,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4 order-lg-1 text-center">
-                                        <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-                                        <h6 class="mt-2">Upload a different photo</h6>
-                                        <label class="custom-file">
-                                            <input type="file" id="file" class="custom-file-input">
-                                            <span class="custom-file-control">Choose file</span>
-                                        </label>
+                                        <img src="images/mantenimiento/donantes.png" class="mx-auto img-fluid img-circle d-block" alt="avatar" style="border-radius: 10px;">
                                     </div>
                                 </div>
                             </div>

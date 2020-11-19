@@ -143,13 +143,13 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <h6>About</h6>
-                                                        <p>
-                                                            Web Designer, UI/UX Engineer
-                                                        </p>
-                                                        <h6>Hobbies</h6>
-                                                        <p>
-                                                            Indie music, skiing and hiking. I love the great outdoors.
-                                                        </p>
+                                                        <p th:text="${beneficiario.descripcionBeneficiario}"></p>
+                                                        <p><i class="fas fa-phone-alt"></i> 2257 7777</p>
+                                                        <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                                                        <a href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
+                                                        <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+                                                        <h6>Since</h6>
+                                                        <p th:text="${beneficiario.edadBeneficiario}"></p>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>

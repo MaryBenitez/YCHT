@@ -10184,7 +10184,7 @@ form .row:first-child .floating-label-form-group {
 
 .slider{
   width: 1000px;
-  height: 100px;
+  height: 200px;
   position: relative;
   background: white;
   box-shadow: 0 10px 20px -10px rgba(0,0,0,0.2);
@@ -10193,13 +10193,13 @@ form .row:first-child .floating-label-form-group {
 }
 
 .slide{
-  height: 150px;
+  height: 200px;
   display: flex;
   align-items: center;
 }
 
 .slide img{
-  height: 100px;
+  height: 200px;
   padding: 0 100px 0 100px;
   animation: slideshow 8s linear infinite;
 }

@@ -44,6 +44,29 @@
                         <div class="col"><font color="white">.</font></div>
                     </div>
                 </div>
+
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="email" th:field="*{correoBeneficiario}" placeholder="Correo" required>
+                    <span class="focus-input100"></span>
+                </div>
+                <div class="container">
+                    <div class="row align-items-start">
+                        <div class="col"><font color="white">.</font></div>
+                        <div class="col"><font color="white">.</font></div>
+                        <div class="col"><font color="white">.</font></div>
+                    </div>
+                </div>
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="tel" th:field="*{telefonoBeneficiario}" placeholder="(503)2257-7777" pattern="[(]{1}[0-9]{3}[)]{1}[0-9]{4}-[0-9]{4}" required>
+                    <span class="focus-input100"></span>
+                </div>
+                <div class="container">
+                    <div class="row align-items-start">
+                        <div class="col"><font color="white">.</font></div>
+                        <div class="col"><font color="white">.</font></div>
+                        <div class="col"><font color="white">.</font></div>
+                    </div>
+                </div>
                 <div class="wrap-input100 validate-input">
                     <input class="input100" type="text" th:field="*{edadBeneficiario}" placeholder="Año de fundacion" required>
                     <span class="focus-input100"></span>

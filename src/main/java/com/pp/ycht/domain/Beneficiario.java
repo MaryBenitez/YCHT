@@ -18,6 +18,12 @@ public class Beneficiario {
     @Column(name="descripcion")
     private String descripcionBeneficiario;
 
+    @Column(name="email")
+    private String correoBeneficiario;
+
+    @Column(name="telefono")
+    private String telefonoBeneficiario;
+
     @Column(name="anio_fundacion")
     private int edadBeneficiario;
 
@@ -57,6 +63,22 @@ public class Beneficiario {
 
     public void setDescripcionBeneficiario(String descripcionBeneficiario) {
         this.descripcionBeneficiario = descripcionBeneficiario;
+    }
+
+    public String getCorreoBeneficiario() {
+        return correoBeneficiario;
+    }
+
+    public void setCorreoBeneficiario(String correoBeneficiario) {
+        this.correoBeneficiario = correoBeneficiario;
+    }
+
+    public String getTelefonoBeneficiario() {
+        return telefonoBeneficiario;
+    }
+
+    public void setTelefonoBeneficiario(String telefonoBeneficiario) {
+        this.telefonoBeneficiario = telefonoBeneficiario;
     }
 
     public int getEdadBeneficiario() {

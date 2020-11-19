@@ -19,6 +19,12 @@ public class Donante {
     @Column(name="apellido")
     private String apellidoDonante;
 
+    @Column(name="email")
+    private String correoDonante;
+
+    @Column(name="telefono")
+    private String telefonoDonante;
+
     @Column(name="edad")
     private int edadDonante;
 
@@ -53,6 +59,22 @@ public class Donante {
 
     public void setApellidoDonante(String apellidoDonante) {
         this.apellidoDonante = apellidoDonante;
+    }
+
+    public String getCorreoDonante() {
+        return correoDonante;
+    }
+
+    public void setCorreoDonante(String correoDonante) {
+        this.correoDonante = correoDonante;
+    }
+
+    public String getTelefonoDonante() {
+        return telefonoDonante;
+    }
+
+    public void setTelefonoDonante(String telefonoDonante) {
+        this.telefonoDonante = telefonoDonante;
     }
 
     public int getEdadDonante() {

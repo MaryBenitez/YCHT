@@ -104,14 +104,12 @@
                     <img class="img-fluid" src="images/mantenimiento/beneficiarios.png" style="border-radius: 10px;" alt="Vivienda"/>
                     <h3 th:text="${beneficiario.nombreBeneficiario}"></h3>
                     <!--<p class="title" th:text="${beneficiario.descripcionBeneficiario}"></p>-->
-                    <p><i class="fas fa-phone-alt"></i> 2257 7777</p>
+                    <p th:text="${beneficiario.telefonoBeneficiario}"><i class="fas fa-phone-alt"></i></p>
                     <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
                     <a href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
                     <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
                 </div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                    Ver perfil
-                </button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Ver perfil                </button>
                 <!-- The Modal -->
                 <div class="modal fade" id="myModal" style="text-align: justify;">
                     <div class="modal-dialog modal-lg">
@@ -144,7 +142,8 @@
                                                     <div class="col-md-6">
                                                         <h6>About</h6>
                                                         <p th:text="${beneficiario.descripcionBeneficiario}"></p>
-                                                        <p><i class="fas fa-phone-alt"></i> 2257 7777</p>
+                                                        <p th:text="${beneficiario.telefonoBeneficiario}"><i class="fas fa-phone-alt"></i></p>
+                                                        <p th:text="${beneficiario.correoBeneficiario}"><a class="lead font-weight-bold" href="mailto:name@example.com">contacto@YCHT.com</a></p>
                                                         <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
                                                         <a href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
                                                         <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>

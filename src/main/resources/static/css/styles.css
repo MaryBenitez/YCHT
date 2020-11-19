@@ -10173,3 +10173,58 @@ form .row:first-child .floating-label-form-group {
 .btn-social {
   margin-bottom: 0.5rem;
 }
+
+.wrapper{
+  width: 50vw;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider{
+  width: 1000px;
+  height: 100px;
+  position: relative;
+  background: white;
+  box-shadow: 0 10px 20px -10px rgba(0,0,0,0.2);
+  display: flex;
+  overflow: hidden;
+}
+
+.slide{
+  height: 150px;
+  display: flex;
+  align-items: center;
+}
+
+.slide img{
+  height: 100px;
+  padding: 0 100px 0 100px;
+  animation: slideshow 8s linear infinite;
+}
+
+@keyframes slideshow {
+  0% {transform: translateX(0);}
+  100% {transform: translateX(-100%);}
+}
+
+.slider::before, .slider::after{
+  height: 150px;
+  width: 150px;
+  position: absolute;
+  content: "";
+  background: linear-gradient(to right, white 0%, rgba(255,255,255,0)100%);
+  z-index: 2;
+  }
+
+.slider::before{
+  left:0;
+  top:0;
+}
+
+.slider::after{
+  right:0;
+  top:0;
+  transform: rotateZ(180deg);
+}

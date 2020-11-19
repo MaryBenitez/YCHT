@@ -57,6 +57,23 @@ public class BeneficiarioController {
         return mav;
     }
 
+    @RequestMapping("/beneficiario/perfilDonante")
+    public ModelAndView verPerfilDonanteEnB(Principal usuario) {
+        ModelAndView mav = new ModelAndView();
+        //mav.addObject("msg", usuario.getName());
+        mav.setViewName("perfilDonante");
+        return mav;
+    }
+
+    @RequestMapping("/beneficiario/perfilDonante/{id}")
+    public ModelAndView verPerfilDonanteEnB(@PathVariable(name = "id") int id) {
+        ModelAndView mav = new ModelAndView("perfilDonante");
+        Donante donante = serviceDonante.get(id);
+        mav.addObject("donante", donante);
+
+        return mav;
+    }
+
     //////////////////PRINCIPAL////////////////////
 
     //////////////////ADMIND//////////////////////

@@ -32,7 +32,7 @@
 <section class="page-section portfolio" id="portfolio">
     <div class="container">
         <div class="row">
-            <h2>Listado de donantes</h2>
+            <h2>Listado de Mis Causas</h2>
             <a th:href="@{/beneficiario/newCausas}" th:text="'Crea Nueva Causa'" class="btn btn-outline-success"></a></td>
         </div>
 
@@ -54,7 +54,7 @@
                 <td th:text="${causa.nombre}"></td>
                 <td th:text="${causa.detalleCausa}"></td>
                 <td th:text="${causa.estado}"></td>
-                <td th:text="${causa.beneficiario}"></td>
+                <td th:text="${causa.getBeneficiario().getNombreBeneficiario()}"></td>
              </tr>
             </tbody>
         </table>

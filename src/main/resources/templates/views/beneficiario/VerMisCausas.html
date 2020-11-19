@@ -13,14 +13,14 @@
     <link type="text/css" rel="stylesheet" href="css/body.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
-    <div class="container"><a class="navbar-brand js-scroll-trigger" href="mantenimiento.html">YOU CAN HELP TOO! ADMIN</a>
+<nav class="navbar navbar-expand-lg bg-primary fixed-top" id="mainNav">
+    <div class="container"><a class="navbar-brand js-scroll-trigger">YOU CAN HELP TOO!</a>
         <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">SOLICITUDES</a>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/beneficiario">DONANTES</a>
                 </li>
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">DONADORES</a>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/beneficiario/perfilD">MI PERFIL</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/logout">LOG OUT</a>
                 </li>
@@ -31,7 +31,11 @@
 <br>
 <section class="page-section portfolio" id="portfolio">
     <div class="container">
-        <h2>Listado de donantes</h2>
+        <div class="row">
+            <h2>Listado de donantes</h2>
+            <a th:href="@{/beneficiario/newCausas}" th:text="'Crea Nueva Causa'" class="btn btn-outline-success"></a></td>
+        </div>
+
         <br>
         <table class="table">
             <thead>
@@ -50,7 +54,7 @@
                 <td th:text="${causa.nombre}"></td>
                 <td th:text="${causa.detalleCausa}"></td>
                 <td th:text="${causa.estado}"></td>
-                <td th:text="${causa.getBeneficiario().getNombreBeneficiario()}"></td>
+                <td th:text="${causa.beneficiario}"></td>
              </tr>
             </tbody>
         </table>

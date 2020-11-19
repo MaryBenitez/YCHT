@@ -24,6 +24,7 @@ public class BeneficiarioService {
     }
 
     public void saveBeneficiario(Beneficiario beneficiario) {
+
         this.beneficiarioRepository.save(beneficiario);
     }
 

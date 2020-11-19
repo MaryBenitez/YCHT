@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Crear Nueva Causa</title>
+</head>
+<body>
+<div align="center">
+    <h1>Crear Nueva Causa</h1>
+    <br />
+    <form action="#" th:action="@{/beneficiario/saveCausa}" th:object="${causas}"
+          method="post">
+
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Nombre:</td>
+                <td><input type="text" th:field="*{nombre}" /></td>
+            </tr>
+            <tr>
+                <td>Detalle:</td>
+                <td><input type="text" th:field="*{detalleCausa}" /></td>
+            </tr>
+            <tr>
+                <td>Estado:</td>
+                <td><input type="text" th:field="*{estado}" /></td>
+            </tr>
+            <tr>
+                <td>Beneficiario:</td>
+                <td><input type="text" th:field="*{beneficiario}" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

@@ -1,7 +1,6 @@
 package com.pp.ycht.domain;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "beneficiario")
@@ -24,8 +23,7 @@ public class Beneficiario {
     @Column(name="estado")
     private boolean estadoBeneficiario;
 
-    public Beneficiario() {
-    }
+    public Beneficiario() {}
 
     public Beneficiario(int idBeneficiario, String nombreBeneficiario, String descripcionBeneficiario, int edadBeneficiario, boolean estadoBeneficiario) {
         this.idBeneficiario = idBeneficiario;
@@ -74,4 +72,5 @@ public class Beneficiario {
     public void setEstadoBeneficiario(boolean estadoBeneficiario) {
         this.estadoBeneficiario = estadoBeneficiario;
     }
+
 }

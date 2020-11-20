@@ -10180,6 +10180,7 @@ form .row:first-child .floating-label-form-group {
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 .slider{
@@ -10227,4 +10228,9 @@ form .row:first-child .floating-label-form-group {
   right:0;
   top:0;
   transform: rotateZ(180deg);
+}
+
+.carousel-inner img {
+  width: 100%;
+  height: 100%;
 }

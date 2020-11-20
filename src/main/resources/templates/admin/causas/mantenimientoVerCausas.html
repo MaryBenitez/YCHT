@@ -35,10 +35,11 @@
             <thead>
             <tr>
                 <th>No</th>
+                <th>Nombre</th>
                 <th>Tipo</th>
                 <th>Detalle</th>
-                <th>Estado</th>
                 <th>Beneficiario</th>
+                <th>Estado</th>
             </tr>
             </thead>
             <tbody>
@@ -46,10 +47,12 @@
                 <!--    <td data-th-text="${donante.idDonante}"></td>-->
                 <td th:text="${causaStatus.count}">1</td>
                 <td th:text="${causa.nombre}"></td>
+                <td th:text="${causa.tipoCausa}"></td>
                 <td th:text="${causa.detalleCausa}"></td>
-                <td th:text="${causa.estado}"></td>
                 <td th:text="${causa.getBeneficiario().getNombreBeneficiario()}"></td>
-             </tr>
+                <td th:if="${causa.estado == true}">Activa</td>
+                <td th:if="${causa.estado == false}">Finalizada</td>
+            </tr>
             </tbody>
         </table>
     </div>

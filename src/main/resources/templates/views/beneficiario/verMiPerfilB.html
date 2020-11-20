@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>YCHT - Bienvenido, beneficiario</title>
-    <link  rel="icon"   href="images/heart_icon1.png" type="image/png" />
+    <link rel="icon" href="images/heart_icon1.png" type="image/png" />
     <base href="/">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -59,9 +59,11 @@
         <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/beneficiario">BENEFICIARIOS</a>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/beneficiario">DONANTES</a>
                 </li>
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/beneficiario/perfil">MI PERFIL</a>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/beneficiario/verCausas">MIS CAUSAS</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/beneficiario/perfilD">MI PERFIL</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/logout">LOG OUT</a>
                 </li>
@@ -89,11 +91,7 @@
                 <div class="tab-content py-4">
                     <div class="tab-pane active" id="profile">
                         <h5 class="mb-3">User Profile</h5>
-                        <h3 th:text="${donante.nombreDonante}+' '+${donante.apellidoDonante}"></h3>
-                        <p th:text="${donante.telefonoDonante}"><i class="fas fa-phone-alt"></i></p>
-                        <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-                        <a href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
-                        <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+                        <h2 th:text="${msg}"></h2>
                         <div class="row">
                             <div class="col-md-6">
                                 <h6>About</h6>
@@ -281,7 +279,7 @@
                 </div>
             </div>
             <div class="col-lg-4 order-lg-1 text-center">
-                <img src="images/perfil2.png" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+                <img src="images/perfil.png" class="mx-auto img-fluid img-circle d-block" alt="avatar">
                 <h6 class="mt-2">Upload a different photo</h6>
                 <label class="custom-file">
                     <input type="file" id="file" class="custom-file-input">

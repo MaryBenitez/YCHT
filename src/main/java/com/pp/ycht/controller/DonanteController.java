@@ -45,13 +45,11 @@ public class DonanteController {
 
         List<Donante> donantes = serviceDonante.listAll(keyword);
         List<Beneficiario> beneficiarios = serviceBeneficiario.listAll();
-        List<Usuario> usuarios = serviceUsuario.listAll();
         modelMap.addAttribute("donantes", donantes);
         modelMap.addAttribute("beneficiarios", beneficiarios);
-        modelMap.addAttribute("usuarios", usuarios);
 
         modelMap.addAttribute("keyword", keyword);
-        return "indexDonantes";
+        return "views/donante/indexDonantes";
     }
 
     @RequestMapping("/donante/perfil")
@@ -61,7 +59,7 @@ public class DonanteController {
         //mav.addObject("msg", usuarioRepository.findByUsername(usuario.getName()).getIdusuario());
         //mav.addObject("msg",serviceDonante.findByIdUserAndIdDonante(usuarioRepository.findByUsername(usuario.getName()).getIdusuario()));
         mav.addObject("msg",usuario.getName());
-        mav.setViewName("verMiPerfilD");
+        mav.setViewName("views/beneficiario/verMiPerfilD");
         return mav;
     }
 
@@ -151,6 +149,16 @@ public class DonanteController {
     public String deleteDonante(@PathVariable(name = "id") int id) {
         serviceDonante.deleteDonante(id);
         return "redirect:/admin/donantes/verDonantes";
+    }
+
+    //Vista perfil de beneficiario
+    @RequestMapping("/donante/perfilBeneficiario/{id}")
+    public ModelAndView verPerfilDonanteEnB(@PathVariable(name = "id") int id) {
+        ModelAndView mav = new ModelAndView("views/donante/perfilBeneficiario");
+        Donante donante = serviceDonante.get(id);
+        mav.addObject("donante", donante);
+
+        return mav;
     }
     //////////////////ADMIN/////////////////////////////
 

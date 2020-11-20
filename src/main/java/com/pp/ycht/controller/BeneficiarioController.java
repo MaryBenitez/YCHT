@@ -41,33 +41,31 @@ public class BeneficiarioController {
 
         List<Donante> donantes = serviceDonante.listAll(keyword);
         List<Beneficiario> beneficiarios = serviceBeneficiario.listAll();
-        List<Usuario> usuarios = serviceUsuario.listAll();
         modelMap.addAttribute("donantes", donantes);
         modelMap.addAttribute("beneficiarios", beneficiarios);
-        modelMap.addAttribute("usuarios", usuarios);
 
         modelMap.addAttribute("keyword", keyword);
-        return "indexBeneficiario";
+        return "views/beneficiario/indexBeneficiario";
     }
     @RequestMapping("/beneficiario/perfil")
     public ModelAndView verPerfilBeneficiario(Principal usuario) {
         ModelAndView mav = new ModelAndView();
         mav.addObject("msg", usuario.getName());
-        mav.setViewName("verMiPerfilB");
+        mav.setViewName("views/beneficiario/verMiPerfilB");
         return mav;
     }
 
-    @RequestMapping("/beneficiario/perfilDonante")
-    public ModelAndView verPerfilDonanteEnB(Principal usuario) {
-        ModelAndView mav = new ModelAndView();
-        //mav.addObject("msg", usuario.getName());
-        mav.setViewName("perfilDonante");
-        return mav;
-    }
+//    @RequestMapping("/beneficiario/perfilDonante")
+//    public ModelAndView verPerfilDonanteEnB(Principal usuario) {
+//        ModelAndView mav = new ModelAndView();
+//        //mav.addObject("msg", usuario.getName());
+//        mav.setViewName("views/beneficiario/perfilDonante");
+//        return mav;
+//    }
 
     @RequestMapping("/beneficiario/perfilDonante/{id}")
     public ModelAndView verPerfilDonanteEnB(@PathVariable(name = "id") int id) {
-        ModelAndView mav = new ModelAndView("perfilDonante");
+        ModelAndView mav = new ModelAndView("views/beneficiario/perfilDonante");
         Donante donante = serviceDonante.get(id);
         mav.addObject("donante", donante);
 

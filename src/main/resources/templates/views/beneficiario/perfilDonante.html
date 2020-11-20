@@ -85,9 +85,10 @@
                 </ul>
                 <div class="tab-content py-4">
                     <div class="tab-pane active" id="profile">
-                        <h5 class="mb-3">User Profile</h5>
+                        <h5 class="mb-3">Perfile donante</h5>
                         <h3 th:text="${donante.nombreDonante}+' '+${donante.apellidoDonante}"></h3>
                         <p th:text="${donante.telefonoDonante}"><i class="fas fa-phone-alt"></i></p>
+                        <p th:text="${donante.correoDonante}"><i class="fas fa-at"></i></p>
                         <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
                         <a href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
                         <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
@@ -95,27 +96,23 @@
                             <div class="col-md-6">
                                 <h6>About</h6>
                                 <p>
-                                    Web Designer, UI/UX Engineer
+                                    Busco ayudar poniendo mi granito de arena.
                                 </p>
-                                <h6>Hobbies</h6>
+                                <!--<h6>Hobbies</h6>
                                 <p>
                                     Indie music, skiing and hiking. I love the great outdoors.
-                                </p>
+                                </p>-->
                             </div>
                             <div class="col-md-6">
-                                <h6>Recent badges</h6>
-                                <a href="#" class="badge badge-dark badge-pill">html5</a>
-                                <a href="#" class="badge badge-dark badge-pill">react</a>
-                                <a href="#" class="badge badge-dark badge-pill">codeply</a>
-                                <a href="#" class="badge badge-dark badge-pill">angularjs</a>
-                                <a href="#" class="badge badge-dark badge-pill">css3</a>
-                                <a href="#" class="badge badge-dark badge-pill">jquery</a>
-                                <a href="#" class="badge badge-dark badge-pill">bootstrap</a>
-                                <a href="#" class="badge badge-dark badge-pill">responsive-design</a>
+                                <h6>Busqueas recientes</h6>
+                                <a href="#" class="badge badge-dark badge-pill">animales</a>
+                                <a href="#" class="badge badge-dark badge-pill">asilos</a>
+                                <a href="#" class="badge badge-dark badge-pill">dinero</a>
+                                <a href="#" class="badge badge-dark badge-pill">educación</a>
                                 <hr>
-                                <span class="badge badge-primary"><i class="fa fa-user"></i> 900 Followers</span>
-                                <span class="badge badge-success"><i class="fa fa-cog"></i> 43 Forks</span>
-                                <span class="badge badge-danger"><i class="fa fa-eye"></i> 245 Views</span>
+                                <span class="badge badge-primary"><i class="fa fa-user"></i> 60 Followers</span>
+                                <span class="badge badge-success"><i class="fa fa-cog"></i> 15 Donaciones</span>
+                                <span class="badge badge-danger"><i class="fa fa-eye"></i> 24 Vistas</span>
                             </div>
                             <div class="col-md-12">
                                 <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>
@@ -123,17 +120,17 @@
                                     <tbody>
                                     <tr>
                                         <td>
-                                            <strong>Abby</strong> joined ACME Project Team in <strong>`Collaboration`</strong>
+                                            <strong th:text="${donante.nombreDonante}+' '+${donante.apellidoDonante}"></strong> ha donado a la causa <strong>`Fiesta fin de año Asilo San Juan de Dios`</strong>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <strong>Gary</strong> deleted My Board1 in <strong>`Discussions`</strong>
+                                            <strong>Gary</strong> ha buscado causas de la categoría <strong>`Asilos`</strong>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <strong>Kensington</strong> deleted MyBoard3 in <strong>`Discussions`</strong>
+                                            <strong th:text="${donante.nombreDonante}+' '+${donante.apellidoDonante}"></strong> ha contactado a <strong>`José García`</strong>
                                         </td>
                                     </tr>
                                     <tr>
@@ -190,11 +187,6 @@
             </div>
             <div class="col-lg-4 order-lg-1 text-center">
                 <img src="images/perfil2.png" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-                <h6 class="mt-2">Upload a different photo</h6>
-                <label class="custom-file">
-                    <input type="file" id="file" class="custom-file-input">
-                    <span class="custom-file-control btn btn-primary">Choose file</span>
-                </label>
             </div>
         </div>
     </div>

@@ -31,21 +31,26 @@
 <br>
 <section class="page-section portfolio" id="portfolio">
     <div class="container">
-        <div class="row">
-            <h2>Listado de Causas</h2>
+        <h2>Listado de Causas</h2>
+        <br>
+        <form th:action="@{/donante/verCausas}">
+            Búsqueda por Tipo: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
             &nbsp;
-            <a th:href="@{/beneficiario/newCausas}" th:text="'Crea Nueva Causa'" class="btn btn-outline-success"></a></td>
-        </div>
-
+            <input class="btn btn-info" type="submit" value="Buscar" />
+            &nbsp;
+            <input class="btn btn-info" type="button" value="Limpiar" id="btnClear" onclick="clearSearch()" />
+        </form>
+        <br>
         <br>
         <table class="table">
             <thead>
             <tr>
                 <th>No</th>
+                <th>Nombre</th>
                 <th>Tipo</th>
                 <th>Detalle</th>
-                <th>Estado</th>
                 <th>Beneficiario</th>
+                <th>Estado</th>
             </tr>
             </thead>
             <tbody>
@@ -53,13 +58,20 @@
                 <!--    <td data-th-text="${donante.idDonante}"></td>-->
                 <td th:text="${causaStatus.count}">1</td>
                 <td th:text="${causa.nombre}"></td>
+                <td th:text="${causa.tipoCausa}"></td>
                 <td th:text="${causa.detalleCausa}"></td>
-                <td th:text="${causa.estado}"></td>
                 <td th:text="${causa.getBeneficiario().getNombreBeneficiario()}"></td>
+                <td th:if="${causa.estado == true}">Activa</td>
+                <td th:if="${causa.estado == false}">Finalizada</td>
              </tr>
             </tbody>
         </table>
     </div>
 </section>
+<script type="text/javascript">
+    function clearSearch() {
+        window.location = "[[@{/donante/verCausas}]]";
+    }
+</script>
 </body>
 </html>

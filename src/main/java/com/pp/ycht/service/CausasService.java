@@ -25,7 +25,10 @@ public class CausasService {
     private IBeneficiario beneficiarioRepository;
 
 
-    public List<Causas> listAll() {
+    public List<Causas> listAll(String keyword) {
+        if (keyword != null) {
+            return causaRepository.search(keyword);
+        }
         return causaRepository.findAll();
     }
 

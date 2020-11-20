@@ -59,7 +59,16 @@ public class DonanteController {
         //mav.addObject("msg", usuarioRepository.findByUsername(usuario.getName()).getIdusuario());
         //mav.addObject("msg",serviceDonante.findByIdUserAndIdDonante(usuarioRepository.findByUsername(usuario.getName()).getIdusuario()));
         mav.addObject("msg",usuario.getName());
-        mav.setViewName("views/beneficiario/verMiPerfilD");
+        mav.setViewName("views/donante/verMiPerfilD");
+        return mav;
+    }
+
+    @RequestMapping("/donante/perfilBeneficiario/{id}")
+    public ModelAndView verPerfilBeneficiarioD(@PathVariable(name = "id") int id) {
+        ModelAndView mav = new ModelAndView("views/donante/perfilBeneficiario");
+        Beneficiario beneficiario = serviceBeneficiario.get(id);
+        mav.addObject("beneficiario", beneficiario);
+
         return mav;
     }
 
@@ -151,15 +160,6 @@ public class DonanteController {
         return "redirect:/admin/donantes/verDonantes";
     }
 
-    //Vista perfil de beneficiario
-    @RequestMapping("/donante/perfilBeneficiario/{id}")
-    public ModelAndView verPerfilDonanteEnB(@PathVariable(name = "id") int id) {
-        ModelAndView mav = new ModelAndView("views/donante/perfilBeneficiario");
-        Donante donante = serviceDonante.get(id);
-        mav.addObject("donante", donante);
-
-        return mav;
-    }
     //////////////////ADMIN/////////////////////////////
 
 }

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Causas</title>
+    <link  rel="icon"   href="images/heart_icon1.png" type="image/png" />
+    <base href="/">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link type="text/css" href="css/styles.css" rel="stylesheet">
+    <!-- Fonts CSS-->
+    <link type="text/css" rel="stylesheet" href="css/heading.css">
+    <link type="text/css" rel="stylesheet" href="css/body.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-primary fixed-top" id="mainNav">
+    <div class="container"><a class="navbar-brand js-scroll-trigger">YOU CAN HELP TOO!</a>
+        <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/beneficiario">DONANTES</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/beneficiario/perfilD">MI PERFIL</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/logout">LOG OUT</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+<section class="page-section portfolio" id="portfolio">
+    <div class="container">
+        <h2>Listado de Causas</h2>
+        <br>
+        <form th:action="@{/donante/verCausas}">
+            Búsqueda por Tipo: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+            &nbsp;
+            <input class="btn btn-info" type="submit" value="Buscar" />
+            &nbsp;
+            <input class="btn btn-info" type="button" value="Limpiar" id="btnClear" onclick="clearSearch()" />
+        </form>
+        <br>
+        <br>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Detalle</th>
+                <th>Beneficiario</th>
+                <th>Estado</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="causa, causaStatus: ${causas}">
+                <!--    <td data-th-text="${donante.idDonante}"></td>-->
+                <td th:text="${causaStatus.count}">1</td>
+                <td th:text="${causa.nombre}"></td>
+                <td th:text="${causa.tipoCausa}"></td>
+                <td th:text="${causa.detalleCausa}"></td>
+                <td th:text="${causa.getBeneficiario().getNombreBeneficiario()}"></td>
+                <td th:if="${causa.estado == true}">Activa</td>
+                <td th:if="${causa.estado == false}">Finalizada</td>
+             </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+<script type="text/javascript">
+    function clearSearch() {
+        window.location = "[[@{/donante/verCausas}]]";
+    }
+</script>
+</body>
+</html>

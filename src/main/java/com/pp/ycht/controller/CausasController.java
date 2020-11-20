@@ -6,6 +6,7 @@ import com.pp.ycht.domain.Usuario;
 import com.pp.ycht.service.BeneficiarioService;
 import com.pp.ycht.service.CausasService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -27,20 +28,31 @@ public class CausasController {
 
     //Causas VISTA DESDE ADMIN
     @RequestMapping("/admin/causas/verCausas")
-    public String verCausas(ModelMap modelMap) {
-        List<Causas> causas = serviceCausas.listAll();
+    public String verCausas(ModelMap modelMap,@Param("keyword") String keyword) {
+        List<Causas> causas = serviceCausas.listAll(keyword);
         modelMap.addAttribute("causas", causas);
+        modelMap.addAttribute("keyword", keyword);
 
         return "admin/causas/mantenimientoVerCausas";
     }
 
     //Causas VISTA
     @RequestMapping("/beneficiario/verCausas")
-    public String verMisCausas(ModelMap modelMap) {
-        List<Causas> causas = serviceCausas.listAll();
+    public String verMisCausas(ModelMap modelMap,@Param("keyword") String keyword) {
+        List<Causas> causas = serviceCausas.listAll(keyword);
         modelMap.addAttribute("causas", causas);
+        modelMap.addAttribute("keyword", keyword);
 
         return "views/beneficiario/VerMisCausas";
+    }
+    //Causas VISTA DONANTE
+    @RequestMapping("/donante/verCausas")
+    public String verCausasD(ModelMap modelMap, @Param("keyword") String keyword) {
+        List<Causas> causas = serviceCausas.listAll(keyword);
+        modelMap.addAttribute("causas", causas);
+        modelMap.addAttribute("keyword", keyword);
+
+        return "views/donante/VerCausas";
     }
 
     //Crear Causas VISTA

@@ -15,6 +15,9 @@ public class Causas {
     @Column(name="nombre")
     private String nombre;
 
+    @Column(name="tipocausas")
+    private String tipoCausa;
+
     @Column(name="detalle_causa")
     private String detalleCausa;
 
@@ -27,9 +30,10 @@ public class Causas {
 
     public Causas() {}
 
-    public Causas(int idcausa, String nombre, String detalleCausa, boolean estado, Beneficiario beneficiario) {
+    public Causas(int idcausa, String nombre, String tipoCausa, String detalleCausa, boolean estado, Beneficiario beneficiario) {
         this.idcausa = idcausa;
         this.nombre = nombre;
+        this.tipoCausa = tipoCausa;
         this.detalleCausa = detalleCausa;
         this.estado = estado;
         this.beneficiario = beneficiario;
@@ -49,6 +53,14 @@ public class Causas {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getTipoCausa() {
+        return tipoCausa;
+    }
+
+    public void setTipoCausa(String tipoCausa) {
+        this.tipoCausa = tipoCausa;
     }
 
     public String getDetalleCausa() {

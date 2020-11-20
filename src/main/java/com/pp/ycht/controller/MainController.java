@@ -30,41 +30,6 @@ public class MainController{
     @Autowired
     private UsuarioService serviceUsuario;
 
-    //Vista loggeado como Donante
-    /*@RequestMapping("/donante")
-    public String indexD(ModelMap modelMap, @Param("keyword") String keyword) {
-
-        List<Donante> donantes = serviceDonante.listAll(keyword);
-        List<Beneficiario> beneficiarios = serviceBeneficiario.listAll();
-        List<Usuario> usuarios = serviceUsuario.listAll();
-        modelMap.addAttribute("donantes", donantes);
-        modelMap.addAttribute("beneficiarios", beneficiarios);
-        modelMap.addAttribute("usuarios", usuarios);
-
-        modelMap.addAttribute("keyword", keyword);
-        return "indexDonantes";
-    }*/
-
-    //Vista loggeado como Beneficiario
-    /*@RequestMapping("/beneficiario")
-    public String indexB(ModelMap modelMap, @Param("keyword") String keyword) {
-
-        List<Donante> donantes = serviceDonante.listAll(keyword);
-        List<Beneficiario> beneficiarios = serviceBeneficiario.listAll();
-        List<Usuario> usuarios = serviceUsuario.listAll();
-        modelMap.addAttribute("donantes", donantes);
-        modelMap.addAttribute("beneficiarios", beneficiarios);
-        modelMap.addAttribute("usuarios", usuarios);
-
-        modelMap.addAttribute("keyword", keyword);
-        return "indexBeneficiario";
-    }
-    @RequestMapping("/beneficiario/perfilD")
-    public String verPerfilDonante() {
-        return "verPerfilDonante";
-    }*/
-
-
     //Login de Usuarios
    @GetMapping(value = {"/login"})
     public String login(Principal principal){

@@ -1,10 +1,13 @@
 package com.pp.ycht.controller;
 
 import com.pp.ycht.domain.Beneficiario;
+import com.pp.ycht.domain.Causas;
 import com.pp.ycht.domain.Donante;
 import com.pp.ycht.domain.Usuario;
+import com.pp.ycht.reposity.ICausaRepo;
 import com.pp.ycht.reposity.IDonanteRepo;
 import com.pp.ycht.service.BeneficiarioService;
+import com.pp.ycht.service.CausasService;
 import com.pp.ycht.service.DonanteService;
 import com.pp.ycht.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,11 +28,10 @@ public class MainController{
     @Autowired
     private IDonanteRepo repo;
     @Autowired
-    private DonanteService serviceDonante;
+    private ICausaRepo causaRepo;
+
     @Autowired
-    private BeneficiarioService serviceBeneficiario;
-    @Autowired
-    private UsuarioService serviceUsuario;
+    private CausasService serviceCausa;
 
     //Login de Usuarios
    @GetMapping(value = {"/login"})
@@ -37,8 +40,18 @@ public class MainController{
     }
 
     @RequestMapping("/index")
-    public String donantes1() {
-        return "index";
+    public ModelAndView donantes1(@ModelAttribute("causas") Causas causas) {
+        ModelAndView mav = new ModelAndView("index");
+
+        List<Causas> asilos = causaRepo.findByCausaAsilo();
+        mav.addObject("asilos", asilos);
+
+        List<Causas> contrucciones = causaRepo.findByCausaContru();
+        mav.addObject("contrucciones", contrucciones);
+
+        List<Causas> animales = causaRepo.findByCausaAnimales();
+        mav.addObject("animales", animales);
+        return mav;
     }
     //Error
     @GetMapping("/access-denied")

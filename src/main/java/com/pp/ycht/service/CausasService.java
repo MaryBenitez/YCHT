@@ -35,4 +35,6 @@ public class CausasService {
     public Causas saveCausas(Causas causas) {
         return causaRepository.save(causas);
     }
+
+
 }
